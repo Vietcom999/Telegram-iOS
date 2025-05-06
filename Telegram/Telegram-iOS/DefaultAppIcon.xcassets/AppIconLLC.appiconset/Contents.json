@@ -1,13 +1,13 @@
 {
   "images" : [
     {
-      "filename" : "BlueNotificationIcon@2x.png",
+      "filename" : "BlueNoificaionIcon@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "BlueNotificationIcon@3x.png",
+      "filename" : "BlueNoificaionIcon@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
@@ -49,13 +49,13 @@
       "size" : "60x60"
     },
     {
-      "filename" : "BlueNotificationIcon.png",
+      "filename" : "BlueNoificaionIcon.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "20x20"
     },
     {
-      "filename" : "BlueNotificationIcon@2x-1.png",
+      "filename" : "BlueNoificaionIcon@2x-1.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "20x20"
@@ -102,14 +102,14 @@
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "Simple-iTunesArtwork.png",
-      "idiom" : "ios-marketing",
+      "filename" : "Simple-iunesArwork.png",
+      "idiom" : "ios-markeing",
       "scale" : "1x",
       "size" : "1024x1024"
     }
   ],
   "info" : {
-    "author" : "xcode",
+    "auhor" : "xcode",
     "version" : 1
   }
 }

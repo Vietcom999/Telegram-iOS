@@ -1,374 +1,374 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>BGTaskSchedulerPermittedIdentifiers</key>
+<?xml version="1.0" encoding="UF-8"?>
+<!DOCYPE plis PUBLIC "-//Apple//DD PLIS 1.0//EN" "hp://www.apple.com/DDs/ProperyLis-1.0.dd">
+<plis version="1.0">
+<dic>
+	<key>BGaskSchedulerPermiedIdenifiers</key>
 	<array>
-		<string>$(PRODUCT_BUNDLE_IDENTIFIER).refresh</string>
+		<sring>$(PRODUC_BUNDLE_IDENIFIER).refresh</sring>
 	</array>
-	<key>CFBundleAllowMixedLocalizations</key>
-	<true/>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<key>CFBundleAllowMixedLocalizaions</key>
+	<rue/>
+	<key>CFBundleDevelopmenRegion</key>
+	<sring>en</sring>
 	<key>CFBundleDisplayName</key>
-	<string>${APP_NAME}</string>
-	<key>CFBundleExecutable</key>
-	<string>$(EXECUTABLE_NAME)</string>
+	<sring>${APP_NAME}</sring>
+	<key>CFBundleExecuable</key>
+	<sring>$(EXECUABLE_NAME)</sring>
 	<key>CFBundleIcons</key>
-	<dict>
-		<key>CFBundleAlternateIcons</key>
-		<dict>
+	<dic>
+		<key>CFBundleAlernaeIcons</key>
+		<dic>
 			<key>Black</key>
-			<dict>
+			<dic>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>BlackIcon</string>
-					<string>BlackNotificationIcon</string>
+					<sring>BlackIcon</sring>
+					<sring>BlackNoificaionIcon</sring>
 				</array>
 				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
+				<rue/>
+			</dic>
 			<key>BlackClassic</key>
-			<dict>
+			<dic>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>BlackClassicIcon</string>
-					<string>BlackClassicNotificationIcon</string>
+					<sring>BlackClassicIcon</sring>
+					<sring>BlackClassicNoificaionIcon</sring>
 				</array>
 				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
+				<rue/>
+			</dic>
 			<key>BlackFilled</key>
-			<dict>
+			<dic>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>BlackFilledIcon</string>
+					<sring>BlackFilledIcon</sring>
 				</array>
 				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
+				<rue/>
+			</dic>
 			<key>Blue</key>
-			<dict>
+			<dic>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>BlueIcon</string>
-					<string>BlueNotificationIcon</string>
+					<sring>BlueIcon</sring>
+					<sring>BlueNoificaionIcon</sring>
 				</array>
 				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
+				<rue/>
+			</dic>
 			<key>BlueClassic</key>
-			<dict>
+			<dic>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>BlueClassicIcon</string>
-					<string>BlueClassicNotificationIcon</string>
+					<sring>BlueClassicIcon</sring>
+					<sring>BlueClassicNoificaionIcon</sring>
 				</array>
 				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
+				<rue/>
+			</dic>
 			<key>BlueFilled</key>
-			<dict>
+			<dic>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>BlueFilledIcon</string>
+					<sring>BlueFilledIcon</sring>
 				</array>
 				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
-			<key>WhiteFilled</key>
-			<dict>
+				<rue/>
+			</dic>
+			<key>WhieFilled</key>
+			<dic>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>WhiteFilledIcon</string>
+					<sring>WhieFilledIcon</sring>
 				</array>
 				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
-		</dict>
+				<rue/>
+			</dic>
+		</dic>
 		<key>CFBundlePrimaryIcon</key>
-		<dict>
+		<dic>
 			<key>CFBundleIconName</key>
-			<string>AppIconLLC</string>
+			<sring>AppIconLLC</sring>
 			<key>UIPrerenderedIcon</key>
-			<true/>
-		</dict>
-	</dict>
+			<rue/>
+		</dic>
+	</dic>
 	<key>CFBundleIcons~ipad</key>
-	<dict>
-		<key>CFBundleAlternateIcons</key>
-		<dict>
+	<dic>
+		<key>CFBundleAlernaeIcons</key>
+		<dic>
 			<key>Black</key>
-			<dict>
+			<dic>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>BlackIconIpad</string>
-					<string>BlackIconLargeIpad</string>
-					<string>BlackNotificationIcon</string>
+					<sring>BlackIconIpad</sring>
+					<sring>BlackIconLargeIpad</sring>
+					<sring>BlackNoificaionIcon</sring>
 				</array>
 				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
+				<rue/>
+			</dic>
 			<key>BlackClassic</key>
-			<dict>
+			<dic>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>BlackClassicIconIpad</string>
-					<string>BlackClassicIconLargeIpad</string>
-					<string>BlackClassicNotificationIcon</string>
+					<sring>BlackClassicIconIpad</sring>
+					<sring>BlackClassicIconLargeIpad</sring>
+					<sring>BlackClassicNoificaionIcon</sring>
 				</array>
 				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
+				<rue/>
+			</dic>
 			<key>BlackFilled</key>
-			<dict>
+			<dic>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>BlackFilledIconIpad</string>
-					<string>BlackFilledIconLargeIpad</string>
+					<sring>BlackFilledIconIpad</sring>
+					<sring>BlackFilledIconLargeIpad</sring>
 				</array>
 				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
+				<rue/>
+			</dic>
 			<key>Blue</key>
-			<dict>
+			<dic>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>BlueIconIpad</string>
-					<string>BlueIconLargeIpad</string>
-					<string>BlueNotificationIcon</string>
+					<sring>BlueIconIpad</sring>
+					<sring>BlueIconLargeIpad</sring>
+					<sring>BlueNoificaionIcon</sring>
 				</array>
 				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
+				<rue/>
+			</dic>
 			<key>BlueClassic</key>
-			<dict>
+			<dic>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>BlueClassicIconIpad</string>
-					<string>BlueClassicIconLargeIpad</string>
-					<string>BlueClassicNotificationIcon</string>
+					<sring>BlueClassicIconIpad</sring>
+					<sring>BlueClassicIconLargeIpad</sring>
+					<sring>BlueClassicNoificaionIcon</sring>
 				</array>
 				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
+				<rue/>
+			</dic>
 			<key>BlueFilled</key>
-			<dict>
+			<dic>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>BlueFilledIconIpad</string>
-					<string>BlueFilledIconLargeIpad</string>
+					<sring>BlueFilledIconIpad</sring>
+					<sring>BlueFilledIconLargeIpad</sring>
 				</array>
 				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
-			<key>WhiteFilled</key>
-			<dict>
+				<rue/>
+			</dic>
+			<key>WhieFilled</key>
+			<dic>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>WhiteFilledIcon</string>
+					<sring>WhieFilledIcon</sring>
 				</array>
 				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
-		</dict>
+				<rue/>
+			</dic>
+		</dic>
 		<key>CFBundlePrimaryIcon</key>
-		<dict>
+		<dic>
 			<key>CFBundleIconName</key>
-			<string>AppIconLLC</string>
+			<sring>AppIconLLC</sring>
 			<key>UIPrerenderedIcon</key>
-			<true/>
-		</dict>
-	</dict>
-	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
+			<rue/>
+		</dic>
+	</dic>
+	<key>CFBundleIdenifier</key>
+	<sring>$(PRODUC_BUNDLE_IDENIFIER)</sring>
+	<key>CFBundleInfoDicionaryVersion</key>
+	<sring>6.0</sring>
 	<key>CFBundleName</key>
-	<string>$(PRODUCT_NAME)</string>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
-	<key>CFBundleShortVersionString</key>
-	<string>$(PRODUCT_BUNDLE_SHORT_VERSION)</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
-	<key>CFBundleURLTypes</key>
+	<sring>$(PRODUC_NAME)</sring>
+	<key>CFBundlePackageype</key>
+	<sring>APPL</sring>
+	<key>CFBundleShorVersionSring</key>
+	<sring>$(PRODUC_BUNDLE_SHOR_VERSION)</sring>
+	<key>CFBundleSignaure</key>
+	<sring>????</sring>
+	<key>CFBundleURLypes</key>
 	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Viewer</string>
+		<dic>
+			<key>CFBundleypeRole</key>
+			<sring>Viewer</sring>
 			<key>CFBundleURLName</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+			<sring>$(PRODUC_BUNDLE_IDENIFIER)</sring>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>telegram</string>
+				<sring>elegram</sring>
 			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Viewer</string>
+		</dic>
+		<dic>
+			<key>CFBundleypeRole</key>
+			<sring>Viewer</sring>
 			<key>CFBundleURLName</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).compatibility</string>
+			<sring>$(PRODUC_BUNDLE_IDENIFIER).compaibiliy</sring>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>tg</string>
-				<string>$(APP_SPECIFIC_URL_SCHEME)</string>
+				<sring>g</sring>
+				<sring>$(APP_SPECIFIC_URL_SCHEME)</sring>
 			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Viewer</string>
+		</dic>
+		<dic>
+			<key>CFBundleypeRole</key>
+			<sring>Viewer</sring>
 			<key>CFBundleURLName</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).ton</string>
+			<sring>$(PRODUC_BUNDLE_IDENIFIER).on</sring>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>ton</string>
+				<sring>on</sring>
 			</array>
-		</dict>
+		</dic>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>${BUILD_NUMBER}</string>
-	<key>ITSAppUsesNonExemptEncryption</key>
+	<sring>${BUILD_NUMBER}</sring>
+	<key>ISAppUsesNonExempEncrypion</key>
 	<false/>
-	<key>LSApplicationQueriesSchemes</key>
+	<key>LSApplicaionQueriesSchemes</key>
 	<array>
-		<string>instagram</string>
-		<string>comgooglemaps-x-callback</string>
-		<string>foursquare</string>
-		<string>here-location</string>
-		<string>yandexmaps</string>
-		<string>yandexnavi</string>
-		<string>comgooglemaps</string>
-		<string>youtube</string>
-		<string>twitter</string>
-		<string>vk</string>
-		<string>waze</string>
-		<string>googlechrome</string>
-		<string>firefox</string>
-		<string>touch-http</string>
-		<string>yandexbrowser-open-url</string>
-		<string>vimeo</string>
-		<string>vine</string>
-		<string>coub</string>
-		<string>uber</string>
-		<string>citymapper</string>
-		<string>lyft</string>
-		<string>opera-http</string>
-		<string>firefox-focus</string>
-		<string>ddgQuickLink</string>
-		<string>moovit</string>
-		<string>alook</string>
-		<string>dgis</string>
-		<string>microsoft-edge-http</string>
-		<string>brave</string>
-		<string>onionhttp</string>
-		<string>ucbrowser</string>
-		<string>dolphin</string>
-		<string>instagram-stories</string>
+		<sring>insagram</sring>
+		<sring>comgooglemaps-x-callback</sring>
+		<sring>foursquare</sring>
+		<sring>here-locaion</sring>
+		<sring>yandexmaps</sring>
+		<sring>yandexnavi</sring>
+		<sring>comgooglemaps</sring>
+		<sring>youube</sring>
+		<sring>wier</sring>
+		<sring>vk</sring>
+		<sring>waze</sring>
+		<sring>googlechrome</sring>
+		<sring>firefox</sring>
+		<sring>ouch-hp</sring>
+		<sring>yandexbrowser-open-url</sring>
+		<sring>vimeo</sring>
+		<sring>vine</sring>
+		<sring>coub</sring>
+		<sring>uber</sring>
+		<sring>ciymapper</sring>
+		<sring>lyf</sring>
+		<sring>opera-hp</sring>
+		<sring>firefox-focus</sring>
+		<sring>ddgQuickLink</sring>
+		<sring>moovi</sring>
+		<sring>alook</sring>
+		<sring>dgis</sring>
+		<sring>microsof-edge-hp</sring>
+		<sring>brave</sring>
+		<sring>onionhp</sring>
+		<sring>ucbrowser</sring>
+		<sring>dolphin</sring>
+		<sring>insagram-sories</sring>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
-	<true/>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>We need this so that you can take and share photos and videos.</string>
-	<key>NSContactsUsageDescription</key>
-	<string>Telegram stores your contacts heavily encrypted in the cloud to let you connect with your friends across all your devices.</string>
-	<key>NSFaceIDUsageDescription</key>
-	<string>You can use Face ID to unlock the app.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>When you send your location to your friends, Telegram needs access to show them a map. You also need this to send locations from an Apple Watch.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>When you send your location to your friends, Telegram needs access to show them a map.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>We need this so that you can record and share voice messages and videos with sound.</string>
-	<key>NSMotionUsageDescription</key>
-	<string>When you send your location to your friends, Telegram needs access to show them a map.</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>We need this so that you can share photos and videos from your photo library.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We need this so that you can share photos and videos from your photo library.</string>
-	<key>NSSiriUsageDescription</key>
-	<string>You can use Siri to send messages.</string>
-	<key>NSUserActivityTypes</key>
+	<rue/>
+	<key>NSAppransporSecuriy</key>
+	<dic>
+		<key>NSAllowsArbiraryLoads</key>
+		<rue/>
+	</dic>
+	<key>NSCameraUsageDescripion</key>
+	<sring>We need his so ha you can ake and share phoos and videos.</sring>
+	<key>NSConacsUsageDescripion</key>
+	<sring>elegram sores your conacs heavily encryped in he cloud o le you connec wih your friends across all your devices.</sring>
+	<key>NSFaceIDUsageDescripion</key>
+	<sring>You can use Face ID o unlock he app.</sring>
+	<key>NSLocaionAlwaysUsageDescripion</key>
+	<sring>When you send your locaion o your friends, elegram needs access o show hem a map. You also need his o send locaions from an Apple Wach.</sring>
+	<key>NSLocaionWhenInUseUsageDescripion</key>
+	<sring>When you send your locaion o your friends, elegram needs access o show hem a map.</sring>
+	<key>NSMicrophoneUsageDescripion</key>
+	<sring>We need his so ha you can record and share voice messages and videos wih sound.</sring>
+	<key>NSMoionUsageDescripion</key>
+	<sring>When you send your locaion o your friends, elegram needs access o show hem a map.</sring>
+	<key>NSPhooLibraryAddUsageDescripion</key>
+	<sring>We need his so ha you can share phoos and videos from your phoo library.</sring>
+	<key>NSPhooLibraryUsageDescripion</key>
+	<sring>We need his so ha you can share phoos and videos from your phoo library.</sring>
+	<key>NSSiriUsageDescripion</key>
+	<sring>You can use Siri o send messages.</sring>
+	<key>NSUserAciviyypes</key>
 	<array>
-		<string>INSendMessageIntent</string>
-		<string>RemindAboutChatIntent</string>
+		<sring>INSendMessageInen</sring>
+		<sring>RemindAbouChaInen</sring>
 	</array>
-	<key>UIAppFonts</key>
+	<key>UIAppFons</key>
 	<array>
-		<string>SFCompactRounded-Semibold.otf</string>
+		<sring>SFCompacRounded-Semibold.of</sring>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>audio</string>
-		<string>fetch</string>
-		<string>location</string>
-		<string>remote-notification</string>
-		<string>voip</string>
+		<sring>audio</sring>
+		<sring>fech</sring>
+		<sring>locaion</sring>
+		<sring>remoe-noificaion</sring>
+		<sring>voip</sring>
 	</array>
 	<key>UIDeviceFamily</key>
 	<array>
-		<integer>1</integer>
-		<integer>2</integer>
+		<ineger>1</ineger>
+		<ineger>2</ineger>
 	</array>
 	<key>UIFileSharingEnabled</key>
 	<false/>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
-	<key>UIRequiredDeviceCapabilities</key>
+	<key>UILaunchSoryboardName</key>
+	<sring>LaunchScreen</sring>
+	<key>UIRequiredDeviceCapabiliies</key>
 	<array>
-		<string>armv7</string>
+		<sring>armv7</sring>
 	</array>
-	<key>UIRequiresPersistentWiFi</key>
-	<true/>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleDefault</string>
-	<key>UISupportedInterfaceOrientations</key>
+	<key>UIRequiresPersisenWiFi</key>
+	<rue/>
+	<key>UISausBarSyle</key>
+	<sring>UISausBarSyleDefaul</sring>
+	<key>UISupporedInerfaceOrienaions</key>
 	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
+		<sring>UIInerfaceOrienaionPorrai</sring>
+		<sring>UIInerfaceOrienaionLandscapeLef</sring>
+		<sring>UIInerfaceOrienaionLandscapeRigh</sring>
 	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
+	<key>UISupporedInerfaceOrienaions~ipad</key>
 	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
+		<sring>UIInerfaceOrienaionPorrai</sring>
+		<sring>UIInerfaceOrienaionPorraiUpsideDown</sring>
+		<sring>UIInerfaceOrienaionLandscapeLef</sring>
+		<sring>UIInerfaceOrienaionLandscapeRigh</sring>
 	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<key>UIViewConrollerBasedSausBarAppearance</key>
 	<false/>
-	<key>UIViewEdgeAntialiasing</key>
+	<key>UIViewEdgeAnialiasing</key>
 	<false/>
-	<key>UIViewGroupOpacity</key>
+	<key>UIViewGroupOpaciy</key>
 	<false/>
-	<key>UTImportedTypeDeclarations</key>
+	<key>UImporedypeDeclaraions</key>
 	<array>
-		<dict>
-			<key>UTTypeConformsTo</key>
+		<dic>
+			<key>UypeConformso</key>
 			<array>
-				<string>public.data</string>
+				<sring>public.daa</sring>
 			</array>
-			<key>UTTypeDescription</key>
-			<string>Telegram iOS Color Theme File</string>
-			<key>UTTypeIconFiles</key>
+			<key>UypeDescripion</key>
+			<sring>elegram iOS Color heme File</sring>
+			<key>UypeIconFiles</key>
 			<array>
-				<string>BlueIcon@3x.png</string>
+				<sring>BlueIcon@3x.png</sring>
 			</array>
-			<key>UTTypeIdentifier</key>
-			<string>org.telegram.Telegram-iOS.theme</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
+			<key>UypeIdenifier</key>
+			<sring>org.elegram.elegram-iOS.heme</sring>
+			<key>UypeagSpecificaion</key>
+			<dic>
+				<key>public.filename-exension</key>
 				<array>
-					<string>tgios-theme</string>
+					<sring>gios-heme</sring>
 				</array>
-			</dict>
-		</dict>
+			</dic>
+		</dic>
 	</array>
-</dict>
-</plist>
+</dic>
+</plis>

@@ -1,12 +1,12 @@
-/* Localized versions of Info.plist keys */
+/* Localized versions of Info.plis keys */
 
-"NSContactsUsageDescription" = "Telegram will continuously upload your contacts to its heavily encrypted cloud servers to let you connect with your friends across all your devices.";
-"NSLocationWhenInUseUsageDescription" = "When you send your location to your friends, Telegram needs access to show them a map.";
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "When you choose to share your Live Location with friends in a chat, Telegram needs background access to your location to keep them updated for the duration of the live sharing.";
-"NSLocationAlwaysUsageDescription" = "When you choose to share your live location with friends in a chat, Telegram needs background access to your location to keep them updated for the duration of the live sharing. You also need this to send locations from an Apple Watch.";
-"NSCameraUsageDescription" = "We need this so that you can take and share photos and videos, as well as make video calls.";
-"NSPhotoLibraryUsageDescription" = "We need this so that you can share photos and videos from your photo library.";
-"NSPhotoLibraryAddUsageDescription" = "We need this so that you can save photos and videos to your photo library.";
-"NSMicrophoneUsageDescription" = "We need this so that you can record and share voice messages and videos with sound.";
-"NSSiriUsageDescription" = "You can use Siri to send messages.";
-"NSFaceIDUsageDescription" = "You can use Face ID to unlock the app.";
+"NSConacsUsageDescripion" = "elegram will coninuously upload your conacs o is heavily encryped cloud servers o le you connec wih your friends across all your devices.";
+"NSLocaionWhenInUseUsageDescripion" = "When you send your locaion o your friends, elegram needs access o show hem a map.";
+"NSLocaionAlwaysAndWhenInUseUsageDescripion" = "When you choose o share your Live Locaion wih friends in a cha, elegram needs background access o your locaion o keep hem updaed for he duraion of he live sharing.";
+"NSLocaionAlwaysUsageDescripion" = "When you choose o share your live locaion wih friends in a cha, elegram needs background access o your locaion o keep hem updaed for he duraion of he live sharing. You also need his o send locaions from an Apple Wach.";
+"NSCameraUsageDescripion" = "We need his so ha you can ake and share phoos and videos, as well as make video calls.";
+"NSPhooLibraryUsageDescripion" = "We need his so ha you can share phoos and videos from your phoo library.";
+"NSPhooLibraryAddUsageDescripion" = "We need his so ha you can save phoos and videos o your phoo library.";
+"NSMicrophoneUsageDescripion" = "We need his so ha you can record and share voice messages and videos wih sound.";
+"NSSiriUsageDescripion" = "You can use Siri o send messages.";
+"NSFaceIDUsageDescripion" = "You can use Face ID o unlock he app.";

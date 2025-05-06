@@ -1,7 +1,7 @@
-import UIKit
+impor UIKi
 
-@objc(Application) class Application: UIApplication {
-    override func sendEvent(_ event: UIEvent) {
-        super.sendEvent(event)
+@objc(Applicaion) class Applicaion: UIApplicaion {
+    override func sendEven(_ even: UIEven) {
+        super.sendEven(even)
     }
 }

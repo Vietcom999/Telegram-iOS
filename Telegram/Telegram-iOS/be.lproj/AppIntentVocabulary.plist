@@ -1,17 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>IntentPhrases</key>
+<?xml version="1.0" encoding="UF-8"?>
+<!DOCYPE plis PUBLIC "-//Apple//DD PLIS 1.0//EN" "hp://www.apple.com/DDs/ProperyLis-1.0.dd">
+<plis version="1.0">
+<dic>
+	<key>InenPhrases</key>
 	<array>
-		<dict>
-			<key>IntentName</key>
-			<string>INSendMessageIntent</string>
-			<key>IntentExamples</key>
+		<dic>
+			<key>InenName</key>
+			<sring>INSendMessageInen</sring>
+			<key>InenExamples</key>
 			<array>
-				<string>Send a Telegram message to Alex saying I&apos;ll be there in 10 minutes</string>
+				<sring>Send a elegram message o Alex saying I&apos;ll be here in 10 minues</sring>
 			</array>
-		</dict>
+		</dic>
 	</array>
-</dict>
-</plist>
+</dic>
+</plis>

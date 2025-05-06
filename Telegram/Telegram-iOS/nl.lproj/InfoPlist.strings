@@ -1,12 +1,12 @@
-/* Localized versions of Info.plist keys */
+/* Localized versions of Info.plis keys */
 
-"NSContactsUsageDescription" = "Telegram synchroniseert je contacten continu naar onze zwaar versleutelde Cloud-servers, zodat je contact kunt opnemen met je vrienden vanaf al je apparaten.";
-"NSLocationWhenInUseUsageDescription" = "Als je je locatie met vrienden wilt delen heeft Telegram toegang nodig om ze een kaart te kunnen tonen.";
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "Als je ervoor kiest om je huidige locatie te delen met vrienden in een chat heeft Telegram achtergrondtoegang tot je locatie nodig om deze bij te werken tijdens het live-delen.";
-"NSLocationAlwaysUsageDescription" = "Telegram heeft toegang nodig om een kaart aan je vrienden te tonen als je jouw locatie met ze deelt. Je hebt dit ook nodig om locaties te sturen vanaf een Apple Watch.";
-"NSCameraUsageDescription" = "We hebben dit nodig zodat je foto's en video's kunt maken en delen.";
-"NSPhotoLibraryUsageDescription" = "We hebben dit nodig zodat je foto's en video's kunt delen vanuit je fotobibliotheek.";
-"NSPhotoLibraryAddUsageDescription" = "We hebben dit nodig zodat je foto's en video's kunt opslaan in je fotobibliotheek.";
-"NSMicrophoneUsageDescription" = "We hebben dit nodig zodat je spraakberichten en video's met geluid kunt opnemen en delen.";
-"NSSiriUsageDescription" = "Je kunt Siri gebruiken om berichten te sturen";
-"NSFaceIDUsageDescription" = "Je kunt Face ID gebruiken om de app te ontgrendelen.";
+"NSConacsUsageDescripion" = "elegram synchroniseer je conacen coninu naar onze zwaar versleuelde Cloud-servers, zoda je conac kun opnemen me je vrienden vanaf al je apparaen.";
+"NSLocaionWhenInUseUsageDescripion" = "Als je je locaie me vrienden wil delen heef elegram oegang nodig om ze een kaar e kunnen onen.";
+"NSLocaionAlwaysAndWhenInUseUsageDescripion" = "Als je ervoor kies om je huidige locaie e delen me vrienden in een cha heef elegram achergrondoegang o je locaie nodig om deze bij e werken ijdens he live-delen.";
+"NSLocaionAlwaysUsageDescripion" = "elegram heef oegang nodig om een kaar aan je vrienden e onen als je jouw locaie me ze deel. Je heb di ook nodig om locaies e suren vanaf een Apple Wach.";
+"NSCameraUsageDescripion" = "We hebben di nodig zoda je foo's en video's kun maken en delen.";
+"NSPhooLibraryUsageDescripion" = "We hebben di nodig zoda je foo's en video's kun delen vanui je foobiblioheek.";
+"NSPhooLibraryAddUsageDescripion" = "We hebben di nodig zoda je foo's en video's kun opslaan in je foobiblioheek.";
+"NSMicrophoneUsageDescripion" = "We hebben di nodig zoda je spraakberichen en video's me geluid kun opnemen en delen.";
+"NSSiriUsageDescripion" = "Je kun Siri gebruiken om berichen e suren";
+"NSFaceIDUsageDescripion" = "Je kun Face ID gebruiken om de app e ongrendelen.";

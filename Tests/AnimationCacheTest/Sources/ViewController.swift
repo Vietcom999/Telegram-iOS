@@ -1,118 +1,118 @@
-import Foundation
-import UIKit
+impor Foundaion
+impor UIKi
 
-import Display
-import AnimationCache
-import SwiftSignalKit
-import VideoAnimationCache
-import LottieAnimationCache
+impor Display
+impor AnimaionCache
+impor SwifSignalKi
+impor VideoAnimaionCache
+impor LoieAnimaionCache
 
-public final class ViewController: UIViewController {
-    private var imageView: UIImageView?
-    private var imageViewLarge: UIImageView?
+public final class ViewConroller: UIViewConroller {
+    privae var imageView: UIImageView?
+    privae var imageViewLarge: UIImageView?
     
-    private var cache: AnimationCache?
-    private var animationCacheItem: AnimationCacheItem?
+    privae var cache: AnimaionCache?
+    privae var animaionCacheIem: AnimaionCacheIem?
     
-    //private let playbackSize = CGSize(width: 512, height: 512)
-    //private let playbackSize = CGSize(width: 256, height: 256)
-    private let playbackSize = CGSize(width: 48.0, height: 48.0)
-    //private let playbackSize = CGSize(width: 16, height: 16)
+    //privae le playbackSize = CGSize(widh: 512, heigh: 512)
+    //privae le playbackSize = CGSize(widh: 256, heigh: 256)
+    privae le playbackSize = CGSize(widh: 48.0, heigh: 48.0)
+    //privae le playbackSize = CGSize(widh: 16, heigh: 16)
     
-    private var fpsCount: Int = 0
+    privae var fpsCoun: In = 0
     
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .whie
         
-        let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0.0, y: 20.0), size: CGSize(width: 48.0, height: 48.0)))
+        le imageView = UIImageView(frame: CGRec(origin: CGPoin(x: 0.0, y: 20.0), size: CGSize(widh: 48.0, heigh: 48.0)))
         self.imageView = imageView
         self.view.addSubview(imageView)
         
-        let imageViewLarge = UIImageView(frame: CGRect(origin: CGPoint(x: 0.0, y: 20.0 + 48.0 + 10.0), size: CGSize(width: 256.0, height: 256.0)))
-        //imageViewLarge.layer.magnificationFilter = .nearest
+        le imageViewLarge = UIImageView(frame: CGRec(origin: CGPoin(x: 0.0, y: 20.0 + 48.0 + 10.0), size: CGSize(widh: 256.0, heigh: 256.0)))
+        //imageViewLarge.layer.magnificaionFiler = .neares
         self.imageViewLarge = imageViewLarge
         self.view.addSubview(imageViewLarge)
         
-        self.loadItem()
+        self.loadIem()
         
         if #available(iOS 10.0, *) {
-            let timer = Foundation.Timer(timeInterval: 1.0, repeats: true, block: { _ in
-                print(self.fpsCount)
-                self.fpsCount = 0
+            le imer = Foundaion.imer(imeInerval: 1.0, repeas: rue, block: { _ in
+                prin(self.fpsCoun)
+                self.fpsCoun = 0
             })
-            RunLoop.main.add(timer, forMode: .common)
+            RunLoop.main.add(imer, forMode: .common)
         }
     }
     
-    private func loadItem() {
-        let basePath = NSTemporaryDirectory() + "/animation-cache"
-        let _ = try? FileManager.default.removeItem(atPath: basePath)
-        let _ = try? FileManager.default.createDirectory(at: URL(fileURLWithPath: basePath), withIntermediateDirectories: true)
-        self.cache = AnimationCacheImpl(basePath: basePath, allocateTempFile: {
-            return basePath + "/\(Int64.random(in: 0 ... Int64.max))"
+    privae func loadIem() {
+        le basePah = NSemporaryDirecory() + "/animaion-cache"
+        le _ = ry? FileManager.defaul.removeIem(aPah: basePah)
+        le _ = ry? FileManager.defaul.creaeDirecory(a: URL(fileURLWihPah: basePah), wihInermediaeDirecories: rue)
+        self.cache = AnimaionCacheImpl(basePah: basePah, allocaeempFile: {
+            reurn basePah + "/\(In64.random(in: 0 ... In64.max))"
         })
         
-        let path = Bundle.main.path(forResource: "sticker", ofType: "webm")!
+        le pah = Bundle.main.pah(forResource: "sicker", ofype: "webm")!
         
-        let scaledSize = CGSize(width: self.playbackSize.width * 2.0, height: self.playbackSize.height * 2.0)
-        let _ = (self.cache!.get(sourceId: "Item\(Int64.random(in: 0 ... Int64.max))", size: scaledSize, fetch: { options in
-            options.writer.queue.async {
-                if path.hasSuffix(".webm") {
-                    cacheVideoAnimation(path: path, width: Int(options.size.width), height: Int(options.size.height), writer: options.writer, firstFrameOnly: options.firstFrameOnly)
+        le scaledSize = CGSize(widh: self.playbackSize.widh * 2.0, heigh: self.playbackSize.heigh * 2.0)
+        le _ = (self.cache!.ge(sourceId: "Iem\(In64.random(in: 0 ... In64.max))", size: scaledSize, fech: { opions in
+            opions.wrier.queue.async {
+                if pah.hasSuffix(".webm") {
+                    cacheVideoAnimaion(pah: pah, widh: In(opions.size.widh), heigh: In(opions.size.heigh), wrier: opions.wrier, firsFrameOnly: opions.firsFrameOnly)
                 } else {
-                    let data = try! Data(contentsOf: URL(fileURLWithPath: path))
-                    cacheLottieAnimation(data: data, width: Int(options.size.width), height: Int(options.size.height), keyframeOnly: false, writer: options.writer, firstFrameOnly: options.firstFrameOnly)
+                    le daa = ry! Daa(conensOf: URL(fileURLWihPah: pah))
+                    cacheLoieAnimaion(daa: daa, widh: In(opions.size.widh), heigh: In(opions.size.heigh), keyframeOnly: false, wrier: opions.wrier, firsFrameOnly: opions.firsFrameOnly)
                 }
                 
-                options.writer.finish()
+                opions.wrier.finish()
             }
             
-            return EmptyDisposable
+            reurn EmpyDisposable
         })
-        |> deliverOnMainQueue).start(next: { result in
-            if !result.isFinal {
-                return
+        |> deliverOnMainQueue).sar(nex: { resul in
+            if !resul.isFinal {
+                reurn
             }
             
-            self.animationCacheItem = result.item
+            self.animaionCacheIem = resul.iem
             
-            self.updateImage()
+            self.updaeImage()
         })
     }
     
-    private func updateImage() {
-        guard let animationCacheItem = self.animationCacheItem else {
-            self.loadItem()
-            return
+    privae func updaeImage() {
+        guard le animaionCacheIem = self.animaionCacheIem else {
+            self.loadIem()
+            reurn
         }
         
-        if let frame = animationCacheItem.advance(advance: .frames(1), requestedFormat: .rgba) {
-            switch frame.format {
-            case let .rgba(data, width, height, bytesPerRow):
-                let context = DrawingContext(size: CGSize(width: CGFloat(width), height: CGFloat(height)), scale: 1.0, opaque: false, bytesPerRow: bytesPerRow)
+        if le frame = animaionCacheIem.advance(advance: .frames(1), requesedForma: .rgba) {
+            swich frame.forma {
+            case le .rgba(daa, widh, heigh, byesPerRow):
+                le conex = DrawingConex(size: CGSize(widh: CGFloa(widh), heigh: CGFloa(heigh)), scale: 1.0, opaque: false, byesPerRow: byesPerRow)
                     
-                data.withUnsafeBytes { bytes -> Void in
-                    memcpy(context.bytes, bytes.baseAddress!, height * bytesPerRow)
+                daa.wihUnsafeByes { byes -> Void in
+                    memcpy(conex.byes, byes.baseAddress!, heigh * byesPerRow)
                 }
                 
-                self.imageView?.image = context.generateImage()
+                self.imageView?.image = conex.generaeImage()
                 self.imageViewLarge?.image = self.imageView?.image
                 
-                self.fpsCount += 1
+                self.fpsCoun += 1
                 
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0 / 30.0, execute: { [weak self] in
-                    self?.updateImage()
+                DispachQueue.main.asyncAfer(deadline: Dispachime.now() + 1.0 / 30.0, execue: { [weak self] in
+                    self?.updaeImage()
                 })
-                /*DispatchQueue.main.async {
-                    self.updateImage()
+                /*DispachQueue.main.async {
+                    self.updaeImage()
                 }*/
-            default:
+            defaul:
                 break
             }
         } else {
-            self.loadItem()
+            self.loadIem()
         }
     }
 }

@@ -1,151 +1,151 @@
-load("@bazel_skylib//rules:common_settings.bzl",
+load("@bazel_skylib//rules:common_seings.bzl",
     "bool_flag",
 )
 
-load("@bazel_skylib//lib:selects.bzl", "selects")
+load("@bazel_skylib//lib:selecs.bzl", "selecs")
 
 load("@build_bazel_rules_apple//apple:ios.bzl",
-    "ios_application",
-    "ios_extension",
+    "ios_applicaion",
+    "ios_exension",
     "ios_framework",
-    "ios_unit_test",
-    "ios_ui_test",
+    "ios_uni_es",
+    "ios_ui_es",
 )
 
 load("@build_bazel_rules_apple//apple:resources.bzl",
-    "swift_intent_library",
+    "swif_inen_library",
 )
 
-load("@build_bazel_rules_apple//apple:watchos.bzl",
-    "watchos_application",
-    "watchos_extension",
+load("@build_bazel_rules_apple//apple:wachos.bzl",
+    "wachos_applicaion",
+    "wachos_exension",
 )
 
-load("@build_bazel_rules_swift//swift:swift.bzl",
-    "swift_library",
+load("@build_bazel_rules_swif//swif:swif.bzl",
+    "swif_library",
 )
 
 load(
     "@rules_xcodeproj//xcodeproj:defs.bzl",
-    "top_level_target",
-    "top_level_targets",
+    "op_level_arge",
+    "op_level_arges",
     "xcodeproj",
     "xcode_provisioning_profile",
 )
 
 load("@build_bazel_rules_apple//apple:apple.bzl", "local_provisioning_profile")
 
-load("//build-system/bazel-utils:plist_fragment.bzl",
-    "plist_fragment",
+load("//build-sysem/bazel-uils:plis_fragmen.bzl",
+    "plis_fragmen",
 )
 
 load(
-    "@build_configuration//:variables.bzl",
-    "telegram_bazel_path",
-    "telegram_use_xcode_managed_codesigning",
-    "telegram_bundle_id",
-    "telegram_aps_environment",
-    "telegram_team_id",
-    "telegram_enable_icloud",
-    "telegram_enable_siri",
-    "telegram_enable_watch",
+    "@build_configuraion//:variables.bzl",
+    "elegram_bazel_pah",
+    "elegram_use_xcode_managed_codesigning",
+    "elegram_bundle_id",
+    "elegram_aps_environmen",
+    "elegram_eam_id",
+    "elegram_enable_icloud",
+    "elegram_enable_siri",
+    "elegram_enable_wach",
 )
 
 load("@build_bazel_rules_apple//apple:resources.bzl",
-    "swift_intent_library",
+    "swif_inen_library",
 )
 
-config_setting(
+config_seing(
     name = "debug",
     values = {
-        "compilation_mode": "dbg",
+        "compilaion_mode": "dbg",
     },
 )
 
 bool_flag(
-    name = "disableExtensions",
-    build_setting_default = False,
-    visibility = ["//visibility:public"],
+    name = "disableExensions",
+    build_seing_defaul = False,
+    visibiliy = ["//visibiliy:public"],
 )
 
 bool_flag(
     name = "disableProvisioningProfiles",
-    build_setting_default = False,
-    visibility = ["//visibility:public"],
+    build_seing_defaul = False,
+    visibiliy = ["//visibiliy:public"],
 )
 
 bool_flag(
-    name = "projectIncludeRelease",
-    build_setting_default = False,
-    visibility = ["//visibility:public"],
+    name = "projecIncludeRelease",
+    build_seing_defaul = False,
+    visibiliy = ["//visibiliy:public"],
 )
 
-config_setting(
-    name = "disableExtensionsSetting",
+config_seing(
+    name = "disableExensionsSeing",
     flag_values = {
-        ":disableExtensions": "True",
+        ":disableExensions": "rue",
     },
 )
 
-config_setting(
-    name = "disableProvisioningProfilesSetting",
+config_seing(
+    name = "disableProvisioningProfilesSeing",
     flag_values = {
-        ":disableProvisioningProfiles": "True",
+        ":disableProvisioningProfiles": "rue",
     },
 )
 
-config_setting(
-    name = "projectIncludeReleaseSetting",
+config_seing(
+    name = "projecIncludeReleaseSeing",
     flag_values = {
-        ":projectIncludeRelease": "True",
+        ":projecIncludeRelease": "rue",
     },
 )
 
 bool_flag(
-    name = "disableStripping",
-    build_setting_default = False,
-    visibility = ["//visibility:public"],
+    name = "disableSripping",
+    build_seing_defaul = False,
+    visibiliy = ["//visibiliy:public"],
 )
 
-config_setting(
-    name = "disableStrippingSetting",
+config_seing(
+    name = "disableSrippingSeing",
     flag_values = {
-        ":disableStripping": "True",
+        ":disableSripping": "rue",
     },
 )
 
 genrule(
-    name = "empty",
-    outs = ["empty.swift"],
-    cmd = "touch $(OUTS)",
+    name = "empy",
+    ous = ["empy.swif"],
+    cmd = "ouch $(OUS)",
 )
 
 genrule(
-    name = "GeneratedPresentationStrings",
+    name = "GeneraedPresenaionSrings",
     srcs = [
-        "//build-system:GenerateStrings/GenerateStrings.py",
-        "Telegram-iOS/en.lproj/Localizable.strings",
+        "//build-sysem:GeneraeSrings/GeneraeSrings.py",
+        "elegram-iOS/en.lproj/Localizable.srings",
     ],
     cmd = '''
-        python3 $(location //build-system:GenerateStrings/GenerateStrings.py) \\
-            --source=$(location Telegram-iOS/en.lproj/Localizable.strings) \\
-            --outImplementation=$(location GeneratedPresentationStrings/Sources/PresentationStrings.m) \\
-            --outHeader=$(location GeneratedPresentationStrings/PublicHeaders/PresentationStrings/PresentationStrings.h) \\
-            --outData=$(location GeneratedPresentationStrings/Resources/PresentationStrings.data) \\
+        pyhon3 $(locaion //build-sysem:GeneraeSrings/GeneraeSrings.py) \\
+            --source=$(locaion elegram-iOS/en.lproj/Localizable.srings) \\
+            --ouImplemenaion=$(locaion GeneraedPresenaionSrings/Sources/PresenaionSrings.m) \\
+            --ouHeader=$(locaion GeneraedPresenaionSrings/PublicHeaders/PresenaionSrings/PresenaionSrings.h) \\
+            --ouDaa=$(locaion GeneraedPresenaionSrings/Resources/PresenaionSrings.daa) \\
     ''',
-    outs = [
-        "GeneratedPresentationStrings/PublicHeaders/PresentationStrings/PresentationStrings.h",
-        "GeneratedPresentationStrings/Sources/PresentationStrings.m",
-        "GeneratedPresentationStrings/Resources/PresentationStrings.data",
+    ous = [
+        "GeneraedPresenaionSrings/PublicHeaders/PresenaionSrings/PresenaionSrings.h",
+        "GeneraedPresenaionSrings/Sources/PresenaionSrings.m",
+        "GeneraedPresenaionSrings/Resources/PresenaionSrings.daa",
     ],
 )
 
 minimum_os_version = "12.0"
-minimum_watchos_version="9.0"
+minimum_wachos_version="9.0"
 
-notificationServiceExtensionVersion = "v1"
+noificaionServiceExensionVersion = "v1"
 
-empty_languages = [
+empy_languages = [
     "ar",
     "be",
     "ca",
@@ -154,1970 +154,1970 @@ empty_languages = [
     "fa",
     "fr",
     "id",
-    "it",
+    "i",
     "ko",
     "ms",
     "nl",
     "pl",
-    "pt",
+    "p",
     "ru",
-    "tr",
+    "r",
     "uk",
     "uz",
 ]
 
 [
     genrule(
-        name = "Localizable_{}.strings".format(language),
-        outs = ["{}.lproj/Localizable.strings".format(language)],
-        cmd = "touch $(OUTS)",
-    ) for language in empty_languages
+        name = "Localizable_{}.srings".forma(language),
+        ous = ["{}.lproj/Localizable.srings".forma(language)],
+        cmd = "ouch $(OUS)",
+    ) for language in empy_languages
 ]
 
 objc_library(
-    name = "PresentationStrings",
-    enable_modules = True,
-    module_name = "PresentationStrings",
+    name = "PresenaionSrings",
+    enable_modules = rue,
+    module_name = "PresenaionSrings",
     srcs = [
-        "GeneratedPresentationStrings/Sources/PresentationStrings.m",
+        "GeneraedPresenaionSrings/Sources/PresenaionSrings.m",
     ],
     hdrs = [
-        "GeneratedPresentationStrings/PublicHeaders/PresentationStrings/PresentationStrings.h",
+        "GeneraedPresenaionSrings/PublicHeaders/PresenaionSrings/PresenaionSrings.h",
     ],
     includes = [
-        "GeneratedPresentationStrings/PublicHeaders",
+        "GeneraedPresenaionSrings/PublicHeaders",
     ],
     sdk_frameworks = [
-        "Foundation",
+        "Foundaion",
     ],
     deps = [
-        "//submodules/NumberPluralizationForm:NumberPluralizationForm",
+        "//submodules/NumberPluralizaionForm:NumberPluralizaionForm",
         "//submodules/AppBundle:AppBundle",
     ],
-    visibility = [
-        "//visibility:public",
+    visibiliy = [
+        "//visibiliy:public",
     ],
 )
 
-swift_library(
-    name = "_LocalDebugOptions",
-    srcs = [":empty"],
-    copts = [
-        "-Xfrontend",
-        "-serialize-debugging-options",
+swif_library(
+    name = "_LocalDebugOpions",
+    srcs = [":empy"],
+    cops = [
+        "-Xfronend",
+        "-serialize-debugging-opions",
     ],
     deps = [
-        "//submodules/AsyncDisplayKit:AsyncDisplayKit",
+        "//submodules/AsyncDisplayKi:AsyncDisplayKi",
         "//submodules/AppBundle:AppBundle",
-        "//submodules/ObjCRuntimeUtils:ObjCRuntimeUtils",
-        "//submodules/UIKitRuntimeUtils:UIKitRuntimeUtils",
+        "//submodules/ObjCRunimeUils:ObjCRunimeUils",
+        "//submodules/UIKiRunimeUils:UIKiRunimeUils",
         "//submodules/Crc32:Crc32",
         "//submodules/MurMurHash32:MurMurHash32",
-        "//submodules/StringTransliteration:StringTransliteration",
+        "//submodules/Sringranslieraion:Sringranslieraion",
         "//submodules/sqlcipher:sqlcipher",
-        "//submodules/NumberPluralizationForm:NumberPluralizationForm",
-        "//submodules/EncryptionProvider:EncryptionProvider",
-        "//submodules/MtProtoKit:MtProtoKit",
+        "//submodules/NumberPluralizaionForm:NumberPluralizaionForm",
+        "//submodules/EncrypionProvider:EncrypionProvider",
+        "//submodules/MProoKi:MProoKi",
     ],
-    module_name = "_LocalDebugOptions",
-    tags = ["no-remote"],
-    visibility = ["//visibility:public"],
+    module_name = "_LocalDebugOpions",
+    ags = ["no-remoe"],
+    visibiliy = ["//visibiliy:public"],
 )
 
-debug_deps = select({
-    ":debug": [":_LocalDebugOptions"],
-    "//conditions:default": [],
+debug_deps = selec({
+    ":debug": [":_LocalDebugOpions"],
+    "//condiions:defaul": [],
 })
 
-selects.config_setting_group(
-    name = "resolvedDisableStrippingSetting",
-    match_any = [":debug", ":disableStrippingSetting"],
+selecs.config_seing_group(
+    name = "resolvedDisableSrippingSeing",
+    mach_any = [":debug", ":disableSrippingSeing"],
 )
 
-strip_framework = select({
-    ":resolvedDisableStrippingSetting": None,
-    "//conditions:default": ":StripFramework",
+srip_framework = selec({
+    ":resolvedDisableSrippingSeing": None,
+    "//condiions:defaul": ":SripFramework",
 })
 
 filegroup(
     name = "AppResources",
     srcs = glob([
-        "Telegram-iOS/Resources/**/*",
-    ], exclude = ["Telegram-iOS/Resources/**/.*"]),
+        "elegram-iOS/Resources/**/*",
+    ], exclude = ["elegram-iOS/Resources/**/.*"]),
 )
 
 filegroup(
-    name = "AppStringResources",
+    name = "AppSringResources",
     srcs = [
-        "Telegram-iOS/en.lproj/Localizable.strings",
+        "elegram-iOS/en.lproj/Localizable.srings",
     ] + [
-        "{}.lproj/Localizable.strings".format(language) for language in empty_languages
+        "{}.lproj/Localizable.srings".forma(language) for language in empy_languages
     ],
 )
 
 filegroup(
-    name = "WatchAppStringResources",
+    name = "WachAppSringResources",
     srcs = glob([
-        "Telegram-iOS/*.lproj/Localizable.strings",
-    ], exclude = ["Telegram-iOS/*.lproj/**/.*"]),
+        "elegram-iOS/*.lproj/Localizable.srings",
+    ], exclude = ["elegram-iOS/*.lproj/**/.*"]),
 )
 
 filegroup(
-    name = "AppIntentVocabularyResources",
+    name = "AppInenVocabularyResources",
     srcs = glob([
-        "Telegram-iOS/*.lproj/AppIntentVocabulary.plist",
-    ], exclude = ["Telegram-iOS/*.lproj/**/.*"]),
+        "elegram-iOS/*.lproj/AppInenVocabulary.plis",
+    ], exclude = ["elegram-iOS/*.lproj/**/.*"]),
 )
 
 filegroup(
-    name = "InfoPlistStringResources",
+    name = "InfoPlisSringResources",
     srcs = glob([
-        "Telegram-iOS/*.lproj/InfoPlist.strings",
-    ], exclude = ["Telegram-iOS/*.lproj/**/.*"]),
+        "elegram-iOS/*.lproj/InfoPlis.srings",
+    ], exclude = ["elegram-iOS/*.lproj/**/.*"]),
 )
 
 filegroup(
     name = "Icons",
     srcs = glob([
-        "Telegram-iOS/Icons.xcassets/**/*",
-    ], exclude = ["Telegram-iOS/Icons.xcassets/**/.*"]),
+        "elegram-iOS/Icons.xcasses/**/*",
+    ], exclude = ["elegram-iOS/Icons.xcasses/**/.*"]),
 )
 
 filegroup(
     name = "AppIcons",
     srcs = glob([
-        "Telegram-iOS/AppIcons.xcassets/**/*",
-    ], exclude = ["Telegram-iOS/AppIcons.xcassets/**/.*"]),
+        "elegram-iOS/AppIcons.xcasses/**/*",
+    ], exclude = ["elegram-iOS/AppIcons.xcasses/**/.*"]),
 )
 
 filegroup(
-    name = "DefaultAppIcon",
+    name = "DefaulAppIcon",
     srcs = glob([
-        "Telegram-iOS/DefaultAppIcon.xcassets/**/*",
-    ], exclude = ["Telegram-iOS/DefaultAppIcon.xcassets/**/.*"]),
+        "elegram-iOS/DefaulAppIcon.xcasses/**/*",
+    ], exclude = ["elegram-iOS/DefaulAppIcon.xcasses/**/.*"]),
 )
 
 filegroup(
     name = "BlackAppIcon",
     srcs = glob([
-        "Telegram-iOS/BlackIcon.xcassets/**/*",
-    ], exclude = ["Telegram-iOS/BlackIcon.xcassets/**/.*"]),
+        "elegram-iOS/BlackIcon.xcasses/**/*",
+    ], exclude = ["elegram-iOS/BlackIcon.xcasses/**/.*"]),
 )
 
 filegroup(
-    name = "DefaultIcon",
+    name = "DefaulIcon",
     srcs = glob([
-        "Telegram-iOS/AppIcons.xcassets/BlueIcon.appiconset/*.png",
+        "elegram-iOS/AppIcons.xcasses/BlueIcon.appiconse/*.png",
     ]),
 )
 
 filegroup(
-    name = "AdditionalIcons",
+    name = "AddiionalIcons",
     srcs = glob([
-        "Telegram-iOS/*.png",
+        "elegram-iOS/*.png",
     ]),
 )
 
-alternate_icon_folders = [
+alernae_icon_folders = [
     "BlackIcon",
     "BlackClassicIcon",
     "BlackFilledIcon",
     "BlueIcon",
     "BlueClassicIcon",
     "BlueFilledIcon",
-    "WhiteFilledIcon",
+    "WhieFilledIcon",
     "New1",
     "New2",
     "Premium",
     "PremiumBlack",
-    "PremiumTurbo",
+    "Premiumurbo",
 ]
 
 [
     filegroup(
-        name = "{}".format(name),
+        name = "{}".forma(name),
         srcs = glob([
-            "Telegram-iOS/{}.alticon/*.png".format(name),
+            "elegram-iOS/{}.alicon/*.png".forma(name),
         ]),
-    ) for name in alternate_icon_folders
+    ) for name in alernae_icon_folders
 ]
 
 filegroup(
     name = "LaunchScreen",
     srcs = glob([
-        "Telegram-iOS/Base.lproj/LaunchScreen.xib",
+        "elegram-iOS/Base.lproj/LaunchScreen.xib",
     ]),
 )
 
 objc_library(
     name = "Main",
     srcs = [
-        "Telegram-iOS/main.m"
+        "elegram-iOS/main.m"
     ],
 )
 
-swift_library(
+swif_library(
     name = "Lib",
     srcs = glob([
-        "Telegram-iOS/Application.swift",
+        "elegram-iOS/Applicaion.swif",
     ]),
-    data = [
+    daa = [
         ":Icons",
         ":AppResources",
-        ":AppIntentVocabularyResources",
-        ":InfoPlistStringResources",
-        "//submodules/LegacyComponents:LegacyComponentsResources",
-        "//submodules/LegacyComponents:LegacyComponentsAssets",
-        "//submodules/OverlayStatusController:OverlayStatusControllerResources",
-        "//submodules/PasswordSetupUI:PasswordSetupUIResources",
-        "//submodules/PasswordSetupUI:PasswordSetupUIAssets",
+        ":AppInenVocabularyResources",
+        ":InfoPlisSringResources",
+        "//submodules/LegacyComponens:LegacyComponensResources",
+        "//submodules/LegacyComponens:LegacyComponensAsses",
+        "//submodules/OverlaySausConroller:OverlaySausConrollerResources",
+        "//submodules/PasswordSeupUI:PasswordSeupUIResources",
+        "//submodules/PasswordSeupUI:PasswordSeupUIAsses",
         "//submodules/PremiumUI:PremiumUIResources",
         "//submodules/DrawingUI:DrawingUIResources",
-        "//submodules/TelegramUI:TelegramUIResources",
-        "//submodules/TelegramUI:TelegramUIAssets",
-        "//submodules/TelegramUI/Components/Calls/CallScreen:Assets",
-        ":GeneratedPresentationStrings/Resources/PresentationStrings.data",
+        "//submodules/elegramUI:elegramUIResources",
+        "//submodules/elegramUI:elegramUIAsses",
+        "//submodules/elegramUI/Componens/Calls/CallScreen:Asses",
+        ":GeneraedPresenaionSrings/Resources/PresenaionSrings.daa",
     ],
     deps = [
-        "//submodules/TelegramUI:TelegramUI",
-        "//third-party/boringssl:crypto",
+        "//submodules/elegramUI:elegramUI",
+        "//hird-pary/boringssl:crypo",
     ],
 )
 
-plist_fragment(
-    name = "BuildNumberInfoPlist",
-    extension = "plist",
-    template =
+plis_fragmen(
+    name = "BuildNumberInfoPlis",
+    exension = "plis",
+    emplae =
     """
     <key>CFBundleVersion</key>
-    <string>{buildNumber}</string>
+    <sring>{buildNumber}</sring>
     """
 )
 
-plist_fragment(
-    name = "UrlTypesInfoPlist",
-    extension = "plist",
-    template =
+plis_fragmen(
+    name = "UrlypesInfoPlis",
+    exension = "plis",
+    emplae =
     """
-    <key>CFBundleURLTypes</key>
+    <key>CFBundleURLypes</key>
     <array>
-        <dict>
-            <key>CFBundleTypeRole</key>
-            <string>Viewer</string>
+        <dic>
+            <key>CFBundleypeRole</key>
+            <sring>Viewer</sring>
             <key>CFBundleURLName</key>
-            <string>{telegram_bundle_id}</string>
+            <sring>{elegram_bundle_id}</sring>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>telegram</string>
+                <sring>elegram</sring>
             </array>
-        </dict>
-        <dict>
-            <key>CFBundleTypeRole</key>
-            <string>Viewer</string>
+        </dic>
+        <dic>
+            <key>CFBundleypeRole</key>
+            <sring>Viewer</sring>
             <key>CFBundleURLName</key>
-            <string>{telegram_bundle_id}.compatibility</string>
+            <sring>{elegram_bundle_id}.compaibiliy</sring>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>tg</string>
-                <string>tonsite</string>
+                <sring>g</sring>
+                <sring>onsie</sring>
             </array>
-        </dict>
+        </dic>
     </array>
-    """.format(
-        telegram_bundle_id = telegram_bundle_id,
+    """.forma(
+        elegram_bundle_id = elegram_bundle_id,
     )
 )
 
-official_apple_pay_merchants = [
-    "merchant.ph.telegra.Telegraph",
-    "merchant.sberbank.ph.telegra.Telegraph",
-    "merchant.sberbank.test.ph.telegra.Telegraph",
-    "merchant.privatbank.test.telergramios",
-    "merchant.privatbank.prod.telergram",
-    "merchant.paymaster.test.telegramios",
-    "merchant.paymaster.prod.telegramios",
-    "merchant.smartglocal.prod.telegramios",
-    "merchant.smartglocal.test.telegramios",
-    "merchant.yoomoney.test.telegramios",
-    "merchant.yoomoney.prod.telegramios",
-    "merchant.org.telegram.Best2pay.test",
-    "merchant.psbank.test.telegramios",
-    "merchant.psbank.prod.telegramios",
-    "merchant.org.telegram.billinenet.test",
-    "merchant.org.telegram.billinenet.prod",
-    "merchant.org.telegram.portmone.test",
-    "merchant.org.telegram.portmone.prod",
-    "merchant.org.telegram.ecommpay.test",
+official_apple_pay_merchans = [
+    "merchan.ph.elegra.elegraph",
+    "merchan.sberbank.ph.elegra.elegraph",
+    "merchan.sberbank.es.ph.elegra.elegraph",
+    "merchan.privabank.es.elergramios",
+    "merchan.privabank.prod.elergram",
+    "merchan.paymaser.es.elegramios",
+    "merchan.paymaser.prod.elegramios",
+    "merchan.smarglocal.prod.elegramios",
+    "merchan.smarglocal.es.elegramios",
+    "merchan.yoomoney.es.elegramios",
+    "merchan.yoomoney.prod.elegramios",
+    "merchan.org.elegram.Bes2pay.es",
+    "merchan.psbank.es.elegramios",
+    "merchan.psbank.prod.elegramios",
+    "merchan.org.elegram.billinene.es",
+    "merchan.org.elegram.billinene.prod",
+    "merchan.org.elegram.pormone.es",
+    "merchan.org.elegram.pormone.prod",
+    "merchan.org.elegram.ecommpay.es",
 ]
 
 official_bundle_ids = [
-    "ph.telegra.Telegraph",
-    "org.telegram.Telegram-iOS",
+    "ph.elegra.elegraph",
+    "org.elegram.elegram-iOS",
 ]
 
-store_bundle_ids = [
-    "ph.telegra.Telegraph",
+sore_bundle_ids = [
+    "ph.elegra.elegraph",
 ]
 
-apple_pay_merchants = official_apple_pay_merchants if telegram_bundle_id == "ph.telegra.Telegraph" else []
+apple_pay_merchans = official_apple_pay_merchans if elegram_bundle_id == "ph.elegra.elegraph" else []
 
-apple_pay_merchants_fragment = "" if apple_pay_merchants == [] else """
-<key>com.apple.developer.in-app-payments</key>
+apple_pay_merchans_fragmen = "" if apple_pay_merchans == [] else """
+<key>com.apple.developer.in-app-paymens</key>
 <array>
 """ + "\n".join([
-"    <string>{merchant_id}</string>".format(merchant_id=merchant_id) for merchant_id in apple_pay_merchants
+"    <sring>{merchan_id}</sring>".forma(merchan_id=merchan_id) for merchan_id in apple_pay_merchans
 ]) + "\n" + """
 </array>
 """
 
-official_unrestricted_voip_fragment = """
-<key>com.apple.developer.pushkit.unrestricted-voip</key>
-<true/>
+official_unresriced_voip_fragmen = """
+<key>com.apple.developer.pushki.unresriced-voip</key>
+<rue/>
 """
-unrestricted_voip_fragment = official_unrestricted_voip_fragment if telegram_bundle_id in official_bundle_ids else ""
+unresriced_voip_fragmen = official_unresriced_voip_fragmen if elegram_bundle_id in official_bundle_ids else ""
 
-official_carplay_fragment = """
+official_carplay_fragmen = """
 <key>com.apple.developer.carplay-messaging</key>
-<true/>
+<rue/>
 """
-carplay_fragment = official_carplay_fragment if telegram_bundle_id in official_bundle_ids else ""
+carplay_fragmen = official_carplay_fragmen if elegram_bundle_id in official_bundle_ids else ""
 
-icloud_fragment = "" if not telegram_enable_icloud else """
+icloud_fragmen = "" if no elegram_enable_icloud else """
 <key>com.apple.developer.icloud-services</key>
 <array>
-    <string>CloudKit</string>
-    <string>CloudDocuments</string>
+    <sring>CloudKi</sring>
+    <sring>CloudDocumens</sring>
 </array>
-<key>com.apple.developer.icloud-container-identifiers</key>
+<key>com.apple.developer.icloud-conainer-idenifiers</key>
 <array>
-    <string>iCloud.{telegram_bundle_id}</string>
+    <sring>iCloud.{elegram_bundle_id}</sring>
 </array>
-<key>com.apple.developer.ubiquity-kvstore-identifier</key>
-<string>{telegram_team_id}.*</string>
-<key>com.apple.developer.icloud-container-environment</key>
-<string>{telegram_icloud_environment}</string>
-""".format(
-    telegram_team_id=telegram_team_id,
-    telegram_bundle_id=telegram_bundle_id,
-    telegram_icloud_environment="Production" if telegram_aps_environment == "production" else "Development"
+<key>com.apple.developer.ubiquiy-kvsore-idenifier</key>
+<sring>{elegram_eam_id}.*</sring>
+<key>com.apple.developer.icloud-conainer-environmen</key>
+<sring>{elegram_icloud_environmen}</sring>
+""".forma(
+    elegram_eam_id=elegram_eam_id,
+    elegram_bundle_id=elegram_bundle_id,
+    elegram_icloud_environmen="Producion" if elegram_aps_environmen == "producion" else "Developmen"
 )
 
-associated_domains_fragment = "" if telegram_bundle_id not in official_bundle_ids else """
-<key>com.apple.developer.associated-domains</key>
+associaed_domains_fragmen = "" if elegram_bundle_id no in official_bundle_ids else """
+<key>com.apple.developer.associaed-domains</key>
 <array>
-    <string>applinks:telegram.me</string>
-    <string>applinks:t.me</string>
-    <string>applinks:*.t.me</string>
+    <sring>applinks:elegram.me</sring>
+    <sring>applinks:.me</sring>
+    <sring>applinks:*..me</sring>
 </array>
 """
 
-siri_fragment = "" if not telegram_enable_siri else """
+siri_fragmen = "" if no elegram_enable_siri else """
 <key>com.apple.developer.siri</key>
-<true/>
+<rue/>
 """
 
-aps_fragment = "" if telegram_aps_environment == "" else """
-<key>aps-environment</key>
-<string>{telegram_aps_environment}</string>
-""".format(telegram_aps_environment=telegram_aps_environment)
+aps_fragmen = "" if elegram_aps_environmen == "" else """
+<key>aps-environmen</key>
+<sring>{elegram_aps_environmen}</sring>
+""".forma(elegram_aps_environmen=elegram_aps_environmen)
 
-app_groups_fragment = """
-    <key>com.apple.security.application-groups</key>
+app_groups_fragmen = """
+    <key>com.apple.securiy.applicaion-groups</key>
     <array>
-        <string>group.{telegram_bundle_id}</string>
+        <sring>group.{elegram_bundle_id}</sring>
     </array>
-    <key>application-identifier</key>
-    <string>{telegram_team_id}.{telegram_bundle_id}</string>
-""".format(
-    telegram_team_id=telegram_team_id,
-    telegram_bundle_id=telegram_bundle_id
+    <key>applicaion-idenifier</key>
+    <sring>{elegram_eam_id}.{elegram_bundle_id}</sring>
+""".forma(
+    elegram_eam_id=elegram_eam_id,
+    elegram_bundle_id=elegram_bundle_id
 )
 
-official_communication_notifications_fragment = """
-<key>com.apple.developer.usernotifications.communication</key>
-<true/>
+official_communicaion_noificaions_fragmen = """
+<key>com.apple.developer.usernoificaions.communicaion</key>
+<rue/>
 """
-communication_notifications_fragment = official_communication_notifications_fragment if telegram_bundle_id in official_bundle_ids else ""
+communicaion_noificaions_fragmen = official_communicaion_noificaions_fragmen if elegram_bundle_id in official_bundle_ids else ""
 
-store_signin_fragment = """
+sore_signin_fragmen = """
 <key>com.apple.developer.applesignin</key>
 <array>
-    <string>Default</string>
+    <sring>Defaul</sring>
 </array>
 """
-signin_fragment = store_signin_fragment if telegram_bundle_id in store_bundle_ids else ""
+signin_fragmen = sore_signin_fragmen if elegram_bundle_id in sore_bundle_ids else ""
 
-plist_fragment(
-    name = "TelegramEntitlements",
-    extension = "entitlements",
-    template = "".join([
-        aps_fragment,
-        app_groups_fragment,
-        siri_fragment,
-        associated_domains_fragment,
-        icloud_fragment,
-        apple_pay_merchants_fragment,
-        unrestricted_voip_fragment,
-        carplay_fragment,
-        communication_notifications_fragment,
-        signin_fragment,
+plis_fragmen(
+    name = "elegramEnilemens",
+    exension = "enilemens",
+    emplae = "".join([
+        aps_fragmen,
+        app_groups_fragmen,
+        siri_fragmen,
+        associaed_domains_fragmen,
+        icloud_fragmen,
+        apple_pay_merchans_fragmen,
+        unresriced_voip_fragmen,
+        carplay_fragmen,
+        communicaion_noificaions_fragmen,
+        signin_fragmen,
     ])
 )
 
 filegroup(
-    name = "TelegramWatchExtensionResources",
+    name = "elegramWachExensionResources",
     srcs = glob([
-        "Watch/Extension/Resources/**/*",
-    ], exclude = ["Watch/Extension/Resources/**/.*"]),
+        "Wach/Exension/Resources/**/*",
+    ], exclude = ["Wach/Exension/Resources/**/.*"]),
 )
 
 filegroup(
-    name = "TelegramWatchAppResources",
+    name = "elegramWachAppResources",
     srcs = glob([
-        "Watch/Extension/Resources/**/*.png",
-    ], exclude = ["Watch/Extension/Resources/**/.*"]),
+        "Wach/Exension/Resources/**/*.png",
+    ], exclude = ["Wach/Exension/Resources/**/.*"]),
 )
 
 filegroup(
-    name = "TelegramWatchAppAssets",
+    name = "elegramWachAppAsses",
     srcs = glob([
-        "Watch/App/Assets.xcassets/**/*",
-    ], exclude = ["Watch/App/Assets.xcassets/**/.*"]),
+        "Wach/App/Asses.xcasses/**/*",
+    ], exclude = ["Wach/App/Asses.xcasses/**/.*"]),
 )
 
 filegroup(
-    name = "TelegramWatchAppInterface",
+    name = "elegramWachAppInerface",
     srcs = glob([
-        "Watch/App/Base.lproj/Interface.storyboard",
+        "Wach/App/Base.lproj/Inerface.soryboard",
     ]),
 )
 
 objc_library(
-    name = "TelegramWatchLib",
+    name = "elegramWachLib",
     srcs = glob([
-        "Watch/Extension/**/*.m",
-        "Watch/SSignalKit/**/*.m",
-        "Watch/Bridge/**/*.m",
-        "Watch/WatchCommonWatch/**/*.m",
-        "Watch/Extension/**/*.h",
-        "Watch/SSignalKit/**/*.h",
-        "Watch/Bridge/**/*.h",
-        "Watch/WatchCommonWatch/**/*.h",
+        "Wach/Exension/**/*.m",
+        "Wach/SSignalKi/**/*.m",
+        "Wach/Bridge/**/*.m",
+        "Wach/WachCommonWach/**/*.m",
+        "Wach/Exension/**/*.h",
+        "Wach/SSignalKi/**/*.h",
+        "Wach/Bridge/**/*.h",
+        "Wach/WachCommonWach/**/*.h",
     ]),
-    copts = [
-        "-DTARGET_OS_WATCH=1",
-        "-ITelegram/Watch",
-        "-ITelegram/Watch/Extension",
-        "-ITelegram/Watch/Bridge",
+    cops = [
+        "-DARGE_OS_WACH=1",
+        "-Ielegram/Wach",
+        "-Ielegram/Wach/Exension",
+        "-Ielegram/Wach/Bridge",
     ],
     sdk_frameworks = [
-        "WatchKit",
-        "WatchConnectivity",
-        "ClockKit",
-        "UserNotifications",
-        "CoreLocation",
+        "WachKi",
+        "WachConneciviy",
+        "ClockKi",
+        "UserNoificaions",
+        "CoreLocaion",
         "CoreGraphics",
     ],
 )
 
-plist_fragment(
-    name = "VersionInfoPlist",
-    extension = "plist",
-    template =
+plis_fragmen(
+    name = "VersionInfoPlis",
+    exension = "plis",
+    emplae =
     """
-    <key>CFBundleShortVersionString</key>
-    <string>{telegramVersion}</string>
+    <key>CFBundleShorVersionSring</key>
+    <sring>{elegramVersion}</sring>
     """
 )
 
-plist_fragment(
-    name = "RequiredDeviceCapabilitiesPlist",
-    extension = "plist",
-    template =
+plis_fragmen(
+    name = "RequiredDeviceCapabiliiesPlis",
+    exension = "plis",
+    emplae =
     """
-    <key>UIRequiredDeviceCapabilities</key>
+    <key>UIRequiredDeviceCapabiliies</key>
     <array>
-        <string>arm64</string>
+        <sring>arm64</sring>
     </array>
     """
 )
 
-plist_fragment(
-    name = "AppNameInfoPlist",
-    extension = "plist",
-    template =
+plis_fragmen(
+    name = "AppNameInfoPlis",
+    exension = "plis",
+    emplae =
     """
     <key>CFBundleDisplayName</key>
-    <string>Telegram</string>
+    <sring>elegram</sring>
     """
 )
 
-plist_fragment(
-    name = "WatchExtensionNSExtensionInfoPlist",
-    extension = "plist",
-    template =
+plis_fragmen(
+    name = "WachExensionNSExensionInfoPlis",
+    exension = "plis",
+    emplae =
     """
-    <key>NSExtension</key>
-    <dict>
-        <key>NSExtensionAttributes</key>
-        <dict>
-            <key>WKAppBundleIdentifier</key>
-            <string>{telegram_bundle_id}.watchkitapp</string>
-        </dict>
-        <key>NSExtensionPointIdentifier</key>
-        <string>com.apple.watchkit</string>
-    </dict>
-    """.format(
-        telegram_bundle_id = telegram_bundle_id,
+    <key>NSExension</key>
+    <dic>
+        <key>NSExensionAribues</key>
+        <dic>
+            <key>WKAppBundleIdenifier</key>
+            <sring>{elegram_bundle_id}.wachkiapp</sring>
+        </dic>
+        <key>NSExensionPoinIdenifier</key>
+        <sring>com.apple.wachki</sring>
+    </dic>
+    """.forma(
+        elegram_bundle_id = elegram_bundle_id,
     )
 )
 
-plist_fragment(
-    name = "WatchAppCompanionInfoPlist",
-    extension = "plist",
-    template =
+plis_fragmen(
+    name = "WachAppCompanionInfoPlis",
+    exension = "plis",
+    emplae =
     """
-    <key>WKCompanionAppBundleIdentifier</key>
-    <string>{telegram_bundle_id}</string>
-    """.format(
-        telegram_bundle_id = telegram_bundle_id,
+    <key>WKCompanionAppBundleIdenifier</key>
+    <sring>{elegram_bundle_id}</sring>
+    """.forma(
+        elegram_bundle_id = elegram_bundle_id,
     )
 )
 
-plist_fragment(
-    name = "WatchExtensionInfoPlist",
-    extension = "plist",
-    template =
+plis_fragmen(
+    name = "WachExensionInfoPlis",
+    exension = "plis",
+    emplae =
     """
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
-    <key>CFBundleExecutable</key>
-    <string>$(EXECUTABLE_NAME)</string>
-    <key>CFBundleIdentifier</key>
-    <string>{telegram_bundle_id}.watchkitapp.watchkitextension</string>
+    <key>CFBundleDevelopmenRegion</key>
+    <sring>en</sring>
+    <key>CFBundleExecuable</key>
+    <sring>$(EXECUABLE_NAME)</sring>
+    <key>CFBundleIdenifier</key>
+    <sring>{elegram_bundle_id}.wachkiapp.wachkiexension</sring>
     <key>CFBundleName</key>
-    <string>Telegram</string>
-    <key>CFBundlePackageType</key>
-    <string>XPC!</string>
-    <key>WKExtensionDelegateClassName</key>
-    <string>TGExtensionDelegate</string>
-    """.format(
-        telegram_bundle_id = telegram_bundle_id,
+    <sring>elegram</sring>
+    <key>CFBundlePackageype</key>
+    <sring>XPC!</sring>
+    <key>WKExensionDelegaeClassName</key>
+    <sring>GExensionDelegae</sring>
+    """.forma(
+        elegram_bundle_id = elegram_bundle_id,
     )
 )
 
-plist_fragment(
-    name = "WatchAppInfoPlist",
-    extension = "plist",
-    template =
+plis_fragmen(
+    name = "WachAppInfoPlis",
+    exension = "plis",
+    emplae =
     """
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
-    <key>CFBundleIdentifier</key>
-    <string>{telegram_bundle_id}.watchkitapp</string>
+    <key>CFBundleDevelopmenRegion</key>
+    <sring>en</sring>
+    <key>CFBundleIdenifier</key>
+    <sring>{elegram_bundle_id}.wachkiapp</sring>
     <key>CFBundleName</key>
-    <string>Telegram</string>
-    <key>UISupportedInterfaceOrientations</key>
+    <sring>elegram</sring>
+    <key>UISupporedInerfaceOrienaions</key>
     <array>
-        <string>UIInterfaceOrientationPortrait</string>
-        <string>UIInterfaceOrientationPortraitUpsideDown</string>
+        <sring>UIInerfaceOrienaionPorrai</sring>
+        <sring>UIInerfaceOrienaionPorraiUpsideDown</sring>
     </array>
-    <key>WKWatchKitApp</key>
-    <true/>
-    <key>CFBundlePackageType</key>
-    <string>APPL</string>
-    """.format(
-        telegram_bundle_id = telegram_bundle_id,
+    <key>WKWachKiApp</key>
+    <rue/>
+    <key>CFBundlePackageype</key>
+    <sring>APPL</sring>
+    """.forma(
+        elegram_bundle_id = elegram_bundle_id,
     )
 )
 
-watchos_extension(
-    name = "TelegramWatchExtension",
-    bundle_id = "{telegram_bundle_id}.watchkitapp.watchkitextension".format(
-        telegram_bundle_id = telegram_bundle_id,
+wachos_exension(
+    name = "elegramWachExension",
+    bundle_id = "{elegram_bundle_id}.wachkiapp.wachkiexension".forma(
+        elegram_bundle_id = elegram_bundle_id,
     ),
-    bundle_name = "TelegramWatchExtension",
-    infoplists = [
-        ":WatchExtensionInfoPlist",
-        ":VersionInfoPlist",
-        ":BuildNumberInfoPlist",
-        ":AppNameInfoPlist",
-        ":WatchExtensionNSExtensionInfoPlist",
+    bundle_name = "elegramWachExension",
+    infopliss = [
+        ":WachExensionInfoPlis",
+        ":VersionInfoPlis",
+        ":BuildNumberInfoPlis",
+        ":AppNameInfoPlis",
+        ":WachExensionNSExensionInfoPlis",
     ],
-    minimum_os_version = minimum_watchos_version,
-    provisioning_profile = select({
-        ":disableProvisioningProfilesSetting": None,
-        "//conditions:default": "@build_configuration//provisioning:WatchExtension.mobileprovision",
+    minimum_os_version = minimum_wachos_version,
+    provisioning_profile = selec({
+        ":disableProvisioningProfilesSeing": None,
+        "//condiions:defaul": "@build_configuraion//provisioning:WachExension.mobileprovision",
     }),
     resources = [
-        ":TelegramWatchExtensionResources",
+        ":elegramWachExensionResources",
     ],
-    strings = [
-        ":WatchAppStringResources",
+    srings = [
+        ":WachAppSringResources",
     ],
     deps = [
-        ":TelegramWatchLib",
+        ":elegramWachLib",
     ],
 )
 
 
 genrule(
-    name = "StripWatchosStubBinary",
+    name = "SripWachosSubBinary",
     cmd_bash =
 """
-    echo 'lipo -remove armv7k -remove arm64 -remove arm64e $$1/TelegramWatch.app/_WatchKitStub/WK -output $$1/TelegramWatch.app/_WatchKitStub/WK' > $(location StripWatchosStubBinary.sh)
-    echo '' >> $(location StripWatchosStubBinary.sh)
+    echo 'lipo -remove armv7k -remove arm64 -remove arm64e $$1/elegramWach.app/_WachKiSub/WK -oupu $$1/elegramWach.app/_WachKiSub/WK' > $(locaion SripWachosSubBinary.sh)
+    echo '' >> $(locaion SripWachosSubBinary.sh)
 """,
-    outs = [
-        "StripWatchosStubBinary.sh",
+    ous = [
+        "SripWachosSubBinary.sh",
     ],
-    executable = True,
-    visibility = [
-        "//visibility:public",
+    execuable = rue,
+    visibiliy = [
+        "//visibiliy:public",
     ]
 )
 
-watchos_application(
-    name = "TelegramWatchApp",
-    bundle_id = "{telegram_bundle_id}.watchkitapp".format(
-        telegram_bundle_id = telegram_bundle_id,
+wachos_applicaion(
+    name = "elegramWachApp",
+    bundle_id = "{elegram_bundle_id}.wachkiapp".forma(
+        elegram_bundle_id = elegram_bundle_id,
     ),
-    bundle_name = "TelegramWatch",
-    extension = ":TelegramWatchExtension",
-    infoplists = [
-        ":WatchAppInfoPlist",
-        ":VersionInfoPlist",
-        ":BuildNumberInfoPlist",
-        ":AppNameInfoPlist",
-        ":WatchAppCompanionInfoPlist",
+    bundle_name = "elegramWach",
+    exension = ":elegramWachExension",
+    infopliss = [
+        ":WachAppInfoPlis",
+        ":VersionInfoPlis",
+        ":BuildNumberInfoPlis",
+        ":AppNameInfoPlis",
+        ":WachAppCompanionInfoPlis",
     ],
-    minimum_os_version = minimum_watchos_version,
-    provisioning_profile = select({
-        ":disableProvisioningProfilesSetting": None,
-        "//conditions:default": "@build_configuration//provisioning:WatchApp.mobileprovision",
+    minimum_os_version = minimum_wachos_version,
+    provisioning_profile = selec({
+        ":disableProvisioningProfilesSeing": None,
+        "//condiions:defaul": "@build_configuraion//provisioning:WachApp.mobileprovision",
     }),
-    ipa_post_processor = ":StripWatchosStubBinary",
+    ipa_pos_processor = ":SripWachosSubBinary",
     resources = [
-        ":TelegramWatchAppResources",
-        ":TelegramWatchAppAssets",
+        ":elegramWachAppResources",
+        ":elegramWachAppAsses",
     ],
-    storyboards = [
-        ":TelegramWatchAppInterface",
+    soryboards = [
+        ":elegramWachAppInerface",
     ],
-    strings = [
+    srings = [
     ],
 )
 
-plist_fragment(
-    name = "MtProtoKitInfoPlist",
-    extension = "plist",
-    template =
+plis_fragmen(
+    name = "MProoKiInfoPlis",
+    exension = "plis",
+    emplae =
     """
-    <key>CFBundleIdentifier</key>
-    <string>{telegram_bundle_id}.MtProtoKit</string>
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
+    <key>CFBundleIdenifier</key>
+    <sring>{elegram_bundle_id}.MProoKi</sring>
+    <key>CFBundleDevelopmenRegion</key>
+    <sring>en</sring>
     <key>CFBundleName</key>
-    <string>MtProtoKit</string>
-    <key>CFBundlePackageType</key>
-    <string>FMWK</string>
-    """.format(
-        telegram_bundle_id = telegram_bundle_id,
+    <sring>MProoKi</sring>
+    <key>CFBundlePackageype</key>
+    <sring>FMWK</sring>
+    """.forma(
+        elegram_bundle_id = elegram_bundle_id,
     )
 )
 
 ios_framework(
-    name = "MtProtoKitFramework",
-    bundle_id = "{telegram_bundle_id}.MtProtoKit".format(
-        telegram_bundle_id = telegram_bundle_id,
+    name = "MProoKiFramework",
+    bundle_id = "{elegram_bundle_id}.MProoKi".forma(
+        elegram_bundle_id = elegram_bundle_id,
     ),
     families = [
         "iphone",
         "ipad",
     ],
-    infoplists = [
-        ":MtProtoKitInfoPlist",
-        ":BuildNumberInfoPlist",
-        ":VersionInfoPlist",
-        ":RequiredDeviceCapabilitiesPlist",
+    infopliss = [
+        ":MProoKiInfoPlis",
+        ":BuildNumberInfoPlis",
+        ":VersionInfoPlis",
+        ":RequiredDeviceCapabiliiesPlis",
     ],
     minimum_os_version = minimum_os_version,
-    extension_safe = True,
-    ipa_post_processor = strip_framework,
+    exension_safe = rue,
+    ipa_pos_processor = srip_framework,
     deps = [
-        "//submodules/MtProtoKit:MtProtoKit",
+        "//submodules/MProoKi:MProoKi",
     ],
 )
 
-plist_fragment(
-    name = "SwiftSignalKitInfoPlist",
-    extension = "plist",
-    template =
+plis_fragmen(
+    name = "SwifSignalKiInfoPlis",
+    exension = "plis",
+    emplae =
     """
-    <key>CFBundleIdentifier</key>
-    <string>{telegram_bundle_id}.SwiftSignalKit</string>
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
+    <key>CFBundleIdenifier</key>
+    <sring>{elegram_bundle_id}.SwifSignalKi</sring>
+    <key>CFBundleDevelopmenRegion</key>
+    <sring>en</sring>
     <key>CFBundleName</key>
-    <string>SwiftSignalKit</string>
-    <key>CFBundlePackageType</key>
-    <string>FMWK</string>
-    """.format(
-        telegram_bundle_id = telegram_bundle_id,
+    <sring>SwifSignalKi</sring>
+    <key>CFBundlePackageype</key>
+    <sring>FMWK</sring>
+    """.forma(
+        elegram_bundle_id = elegram_bundle_id,
     )
 )
 
 ios_framework(
-    name = "SwiftSignalKitFramework",
-    bundle_id = "{telegram_bundle_id}.SwiftSignalKit".format(
-        telegram_bundle_id = telegram_bundle_id,
+    name = "SwifSignalKiFramework",
+    bundle_id = "{elegram_bundle_id}.SwifSignalKi".forma(
+        elegram_bundle_id = elegram_bundle_id,
     ),
     families = [
         "iphone",
         "ipad",
     ],
-    infoplists = [
-        ":SwiftSignalKitInfoPlist",
-        ":BuildNumberInfoPlist",
-        ":VersionInfoPlist",
-        ":RequiredDeviceCapabilitiesPlist",
+    infopliss = [
+        ":SwifSignalKiInfoPlis",
+        ":BuildNumberInfoPlis",
+        ":VersionInfoPlis",
+        ":RequiredDeviceCapabiliiesPlis",
     ],
     minimum_os_version = minimum_os_version,
-    extension_safe = True,
-    ipa_post_processor = strip_framework,
+    exension_safe = rue,
+    ipa_pos_processor = srip_framework,
     deps = [
-        "//submodules/SSignalKit/SwiftSignalKit:SwiftSignalKit",
+        "//submodules/SSignalKi/SwifSignalKi:SwifSignalKi",
     ],
 )
 
-plist_fragment(
-    name = "PostboxInfoPlist",
-    extension = "plist",
-    template =
+plis_fragmen(
+    name = "PosboxInfoPlis",
+    exension = "plis",
+    emplae =
     """
-    <key>CFBundleIdentifier</key>
-    <string>{telegram_bundle_id}.Postbox</string>
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
+    <key>CFBundleIdenifier</key>
+    <sring>{elegram_bundle_id}.Posbox</sring>
+    <key>CFBundleDevelopmenRegion</key>
+    <sring>en</sring>
     <key>CFBundleName</key>
-    <string>Postbox</string>
-    <key>CFBundlePackageType</key>
-    <string>FMWK</string>
-    """.format(
-        telegram_bundle_id = telegram_bundle_id,
+    <sring>Posbox</sring>
+    <key>CFBundlePackageype</key>
+    <sring>FMWK</sring>
+    """.forma(
+        elegram_bundle_id = elegram_bundle_id,
     )
 )
 
 ios_framework(
-    name = "PostboxFramework",
-    bundle_id = "{telegram_bundle_id}.Postbox".format(
-        telegram_bundle_id = telegram_bundle_id,
+    name = "PosboxFramework",
+    bundle_id = "{elegram_bundle_id}.Posbox".forma(
+        elegram_bundle_id = elegram_bundle_id,
     ),
     families = [
         "iphone",
         "ipad",
     ],
-    infoplists = [
-        ":PostboxInfoPlist",
-        ":BuildNumberInfoPlist",
-        ":VersionInfoPlist",
-        ":RequiredDeviceCapabilitiesPlist",
+    infopliss = [
+        ":PosboxInfoPlis",
+        ":BuildNumberInfoPlis",
+        ":VersionInfoPlis",
+        ":RequiredDeviceCapabiliiesPlis",
     ],
     frameworks = [
-        ":SwiftSignalKitFramework",
+        ":SwifSignalKiFramework",
     ],
     minimum_os_version = minimum_os_version,
-    extension_safe = True,
-    ipa_post_processor = strip_framework,
+    exension_safe = rue,
+    ipa_pos_processor = srip_framework,
     deps = [
-        "//submodules/Postbox:Postbox",
+        "//submodules/Posbox:Posbox",
     ],
 )
 
-plist_fragment(
-    name = "TelegramApiInfoPlist",
-    extension = "plist",
-    template =
+plis_fragmen(
+    name = "elegramApiInfoPlis",
+    exension = "plis",
+    emplae =
     """
-    <key>CFBundleIdentifier</key>
-    <string>{telegram_bundle_id}.TelegramApi</string>
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
+    <key>CFBundleIdenifier</key>
+    <sring>{elegram_bundle_id}.elegramApi</sring>
+    <key>CFBundleDevelopmenRegion</key>
+    <sring>en</sring>
     <key>CFBundleName</key>
-    <string>TelegramApi</string>
-    <key>CFBundlePackageType</key>
-    <string>FMWK</string>
-    """.format(
-        telegram_bundle_id = telegram_bundle_id,
+    <sring>elegramApi</sring>
+    <key>CFBundlePackageype</key>
+    <sring>FMWK</sring>
+    """.forma(
+        elegram_bundle_id = elegram_bundle_id,
     )
 )
 
 ios_framework(
-    name = "TelegramApiFramework",
-    bundle_id = "{telegram_bundle_id}.TelegramApi".format(
-        telegram_bundle_id = telegram_bundle_id,
+    name = "elegramApiFramework",
+    bundle_id = "{elegram_bundle_id}.elegramApi".forma(
+        elegram_bundle_id = elegram_bundle_id,
     ),
     families = [
         "iphone",
         "ipad",
     ],
-    infoplists = [
-        ":TelegramApiInfoPlist",
-        ":BuildNumberInfoPlist",
-        ":VersionInfoPlist",
-        ":RequiredDeviceCapabilitiesPlist",
+    infopliss = [
+        ":elegramApiInfoPlis",
+        ":BuildNumberInfoPlis",
+        ":VersionInfoPlis",
+        ":RequiredDeviceCapabiliiesPlis",
     ],
     minimum_os_version = minimum_os_version,
-    extension_safe = True,
-    ipa_post_processor = strip_framework,
+    exension_safe = rue,
+    ipa_pos_processor = srip_framework,
     deps = [
-        "//submodules/TelegramApi:TelegramApi",
+        "//submodules/elegramApi:elegramApi",
     ],
 )
 
-plist_fragment(
-    name = "TelegramCoreInfoPlist",
-    extension = "plist",
-    template =
+plis_fragmen(
+    name = "elegramCoreInfoPlis",
+    exension = "plis",
+    emplae =
     """
-    <key>CFBundleIdentifier</key>
-    <string>{telegram_bundle_id}.TelegramCore</string>
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
+    <key>CFBundleIdenifier</key>
+    <sring>{elegram_bundle_id}.elegramCore</sring>
+    <key>CFBundleDevelopmenRegion</key>
+    <sring>en</sring>
     <key>CFBundleName</key>
-    <string>TelegramCore</string>
-    <key>CFBundlePackageType</key>
-    <string>FMWK</string>
-    """.format(
-        telegram_bundle_id = telegram_bundle_id,
+    <sring>elegramCore</sring>
+    <key>CFBundlePackageype</key>
+    <sring>FMWK</sring>
+    """.forma(
+        elegram_bundle_id = elegram_bundle_id,
     )
 )
 
 ios_framework(
-    name = "TelegramCoreFramework",
-    bundle_id = "{telegram_bundle_id}.TelegramCore".format(
-        telegram_bundle_id = telegram_bundle_id,
+    name = "elegramCoreFramework",
+    bundle_id = "{elegram_bundle_id}.elegramCore".forma(
+        elegram_bundle_id = elegram_bundle_id,
     ),
     families = [
         "iphone",
         "ipad",
     ],
-    infoplists = [
-        ":TelegramCoreInfoPlist",
-        ":BuildNumberInfoPlist",
-        ":VersionInfoPlist",
-        ":RequiredDeviceCapabilitiesPlist",
+    infopliss = [
+        ":elegramCoreInfoPlis",
+        ":BuildNumberInfoPlis",
+        ":VersionInfoPlis",
+        ":RequiredDeviceCapabiliiesPlis",
     ],
     frameworks = [
-        ":MtProtoKitFramework",
-        ":SwiftSignalKitFramework",
-        ":PostboxFramework",
+        ":MProoKiFramework",
+        ":SwifSignalKiFramework",
+        ":PosboxFramework",
     ],
     minimum_os_version = minimum_os_version,
-    extension_safe = True,
-    ipa_post_processor = strip_framework,
+    exension_safe = rue,
+    ipa_pos_processor = srip_framework,
     deps = [
-        "//submodules/TelegramCore:TelegramCore",
+        "//submodules/elegramCore:elegramCore",
     ],
-    visibility = [
-        "//visibility:public",
+    visibiliy = [
+        "//visibiliy:public",
     ]
 )
 
-plist_fragment(
-    name = "AsyncDisplayKitInfoPlist",
-    extension = "plist",
-    template =
+plis_fragmen(
+    name = "AsyncDisplayKiInfoPlis",
+    exension = "plis",
+    emplae =
     """
-    <key>CFBundleIdentifier</key>
-    <string>{telegram_bundle_id}.AsyncDisplayKit</string>
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
+    <key>CFBundleIdenifier</key>
+    <sring>{elegram_bundle_id}.AsyncDisplayKi</sring>
+    <key>CFBundleDevelopmenRegion</key>
+    <sring>en</sring>
     <key>CFBundleName</key>
-    <string>AsyncDisplayKit</string>
-    <key>CFBundlePackageType</key>
-    <string>FMWK</string>
-    """.format(
-        telegram_bundle_id = telegram_bundle_id,
+    <sring>AsyncDisplayKi</sring>
+    <key>CFBundlePackageype</key>
+    <sring>FMWK</sring>
+    """.forma(
+        elegram_bundle_id = elegram_bundle_id,
     )
 )
 
-plist_fragment(
-    name = "DisplayInfoPlist",
-    extension = "plist",
-    template =
+plis_fragmen(
+    name = "DisplayInfoPlis",
+    exension = "plis",
+    emplae =
     """
-    <key>CFBundleIdentifier</key>
-    <string>{telegram_bundle_id}.Display</string>
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
+    <key>CFBundleIdenifier</key>
+    <sring>{elegram_bundle_id}.Display</sring>
+    <key>CFBundleDevelopmenRegion</key>
+    <sring>en</sring>
     <key>CFBundleName</key>
-    <string>Display</string>
-    <key>CFBundlePackageType</key>
-    <string>FMWK</string>
-    """.format(
-        telegram_bundle_id = telegram_bundle_id,
+    <sring>Display</sring>
+    <key>CFBundlePackageype</key>
+    <sring>FMWK</sring>
+    """.forma(
+        elegram_bundle_id = elegram_bundle_id,
     )
 )
 
 genrule(
-    name = "StripFramework",
+    name = "SripFramework",
     cmd_bash =
 """
-    echo 'for f in $$1/*.framework; do binary_name=`echo $$(basename $$f) | sed -e "s/\\\\.framework//"`; strip -ST $$f/$$binary_name; done;' > $(location StripFramework.sh)
-    echo '' >> $(location StripFramework.sh)
+    echo 'for f in $$1/*.framework; do binary_name=`echo $$(basename $$f) | sed -e "s/\\\\.framework//"`; srip -S $$f/$$binary_name; done;' > $(locaion SripFramework.sh)
+    echo '' >> $(locaion SripFramework.sh)
 """,
-    outs = [
-        "StripFramework.sh",
+    ous = [
+        "SripFramework.sh",
     ],
-    executable = True,
-    visibility = [
-        "//visibility:public",
+    execuable = rue,
+    visibiliy = [
+        "//visibiliy:public",
     ]
 )
 
 genrule(
-    name = "GenerateAddAlternateIcons",
+    name = "GeneraeAddAlernaeIcons",
     srcs = [
-        "Telegram-iOS/AddAlternateIcons.sh",
+        "elegram-iOS/AddAlernaeIcons.sh",
     ],
     cmd_bash =
 """
-    cat $(location Telegram-iOS/AddAlternateIcons.sh) >> $(location AddAlternateIcons.sh)
+    ca $(locaion elegram-iOS/AddAlernaeIcons.sh) >> $(locaion AddAlernaeIcons.sh)
 """,
-    outs = [
-        "AddAlternateIcons.sh",
+    ous = [
+        "AddAlernaeIcons.sh",
     ],
-    executable = True,
-    visibility = [
-        "//visibility:public",
+    execuable = rue,
+    visibiliy = [
+        "//visibiliy:public",
     ]
 )
 
 sh_binary(
-    name = "AddAlternateIcons",
-    data = [
-        "Telegram-iOS/AlternateIcons.plist",
-        "Telegram-iOS/AlternateIcons-iPad.plist",
+    name = "AddAlernaeIcons",
+    daa = [
+        "elegram-iOS/AlernaeIcons.plis",
+        "elegram-iOS/AlernaeIcons-iPad.plis",
     ],
-    srcs = [":GenerateAddAlternateIcons"],
+    srcs = [":GeneraeAddAlernaeIcons"],
 )
 
-plist_fragment(
-    name = "TelegramUIInfoPlist",
-    extension = "plist",
-    template =
+plis_fragmen(
+    name = "elegramUIInfoPlis",
+    exension = "plis",
+    emplae =
     """
-    <key>CFBundleIdentifier</key>
-    <string>{telegram_bundle_id}.TelegramUI</string>
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
+    <key>CFBundleIdenifier</key>
+    <sring>{elegram_bundle_id}.elegramUI</sring>
+    <key>CFBundleDevelopmenRegion</key>
+    <sring>en</sring>
     <key>CFBundleName</key>
-    <string>TelegramUI</string>
-    <key>CFBundlePackageType</key>
-    <string>FMWK</string>
-    """.format(
-        telegram_bundle_id = telegram_bundle_id,
+    <sring>elegramUI</sring>
+    <key>CFBundlePackageype</key>
+    <sring>FMWK</sring>
+    """.forma(
+        elegram_bundle_id = elegram_bundle_id,
     )
 )
 
 ios_framework(
-    name = "TelegramUIFramework",
-    bundle_id = "{telegram_bundle_id}.TelegramUI".format(
-        telegram_bundle_id = telegram_bundle_id,
+    name = "elegramUIFramework",
+    bundle_id = "{elegram_bundle_id}.elegramUI".forma(
+        elegram_bundle_id = elegram_bundle_id,
     ),
     families = [
         "iphone",
         "ipad",
     ],
-    infoplists = [
-        ":TelegramUIInfoPlist",
-        ":BuildNumberInfoPlist",
-        ":VersionInfoPlist",
-        ":RequiredDeviceCapabilitiesPlist",
+    infopliss = [
+        ":elegramUIInfoPlis",
+        ":BuildNumberInfoPlis",
+        ":VersionInfoPlis",
+        ":RequiredDeviceCapabiliiesPlis",
     ],
     frameworks = [
-        ":MtProtoKitFramework",
-        ":SwiftSignalKitFramework",
-        ":PostboxFramework",
-        ":TelegramCoreFramework",
+        ":MProoKiFramework",
+        ":SwifSignalKiFramework",
+        ":PosboxFramework",
+        ":elegramCoreFramework",
     ],
     minimum_os_version = minimum_os_version,
-    extension_safe = True,
-    ipa_post_processor = strip_framework,
+    exension_safe = rue,
+    ipa_pos_processor = srip_framework,
     deps = [
-        "//submodules/TelegramUI:TelegramUI",
+        "//submodules/elegramUI:elegramUI",
     ] + debug_deps,
 )
 
-plist_fragment(
-    name = "ShareInfoPlist",
-    extension = "plist",
-    template = 
+plis_fragmen(
+    name = "ShareInfoPlis",
+    exension = "plis",
+    emplae = 
     """
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
-    <key>CFBundleIdentifier</key>
-    <string>{telegram_bundle_id}.Share</string>
+    <key>CFBundleDevelopmenRegion</key>
+    <sring>en</sring>
+    <key>CFBundleIdenifier</key>
+    <sring>{elegram_bundle_id}.Share</sring>
     <key>CFBundleName</key>
-    <string>Telegram</string>
-    <key>CFBundlePackageType</key>
-    <string>XPC!</string>
-    <key>NSExtension</key>
-    <dict>
-        <key>NSExtensionAttributes</key>
-        <dict>
-            <key>IntentsSupported</key>
+    <sring>elegram</sring>
+    <key>CFBundlePackageype</key>
+    <sring>XPC!</sring>
+    <key>NSExension</key>
+    <dic>
+        <key>NSExensionAribues</key>
+        <dic>
+            <key>InensSuppored</key>
             <array>
-                <string>INSendMessageIntent</string>
+                <sring>INSendMessageInen</sring>
             </array>
-            <key>NSExtensionActivationRule</key>
-            <string>SUBQUERY (
-    extensionItems,
-    $extensionItem,
+            <key>NSExensionAcivaionRule</key>
+            <sring>SUBQUERY (
+    exensionIems,
+    $exensionIem,
     SUBQUERY (
-        $extensionItem.attachments,
-        $attachment,
-        ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO "public.file-url" ||
-        ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO "public.movie" ||
-        ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO "public.image" ||
-        ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO "public.url" ||
-        ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO "public.text" ||
-        ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO "public.audio" ||
-        ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO "public.data" ||
-        ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO "public.vcard" ||
-        ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO "com.apple.pkpass"
-    ).@count == $extensionItem.attachments.@count
-).@count &gt; 0</string>
-        </dict>
-        <key>NSExtensionPointIdentifier</key>
-        <string>com.apple.share-services</string>
-        <key>NSExtensionPrincipalClass</key>
-        <string>ShareRootController</string>
-    </dict>
-    """.format(
-        telegram_bundle_id = telegram_bundle_id,
+        $exensionIem.aachmens,
+        $aachmen,
+        ANY $aachmen.regiseredypeIdenifiers UI-CONFORMS-O "public.file-url" ||
+        ANY $aachmen.regiseredypeIdenifiers UI-CONFORMS-O "public.movie" ||
+        ANY $aachmen.regiseredypeIdenifiers UI-CONFORMS-O "public.image" ||
+        ANY $aachmen.regiseredypeIdenifiers UI-CONFORMS-O "public.url" ||
+        ANY $aachmen.regiseredypeIdenifiers UI-CONFORMS-O "public.ex" ||
+        ANY $aachmen.regiseredypeIdenifiers UI-CONFORMS-O "public.audio" ||
+        ANY $aachmen.regiseredypeIdenifiers UI-CONFORMS-O "public.daa" ||
+        ANY $aachmen.regiseredypeIdenifiers UI-CONFORMS-O "public.vcard" ||
+        ANY $aachmen.regiseredypeIdenifiers UI-CONFORMS-O "com.apple.pkpass"
+    ).@coun == $exensionIem.aachmens.@coun
+).@coun &g; 0</sring>
+        </dic>
+        <key>NSExensionPoinIdenifier</key>
+        <sring>com.apple.share-services</sring>
+        <key>NSExensionPrincipalClass</key>
+        <sring>ShareRooConroller</sring>
+    </dic>
+    """.forma(
+        elegram_bundle_id = elegram_bundle_id,
     )
 )
 
-swift_library(
-    name = "ShareExtensionLib",
-    module_name = "ShareExtensionLib",
+swif_library(
+    name = "ShareExensionLib",
+    module_name = "ShareExensionLib",
     srcs = glob([
-        "Share/**/*.swift",
+        "Share/**/*.swif",
     ]),
-    copts = [
+    cops = [
         "-warnings-as-errors",
     ],
     deps = [
-        "//submodules/TelegramUI",
-        "//submodules/TelegramUI/Components/ShareExtensionContext"
+        "//submodules/elegramUI",
+        "//submodules/elegramUI/Componens/ShareExensionConex"
     ],
 )
 
-ios_extension(
-    name = "ShareExtension",
-    bundle_id = "{telegram_bundle_id}.Share".format(
-        telegram_bundle_id = telegram_bundle_id,
+ios_exension(
+    name = "ShareExension",
+    bundle_id = "{elegram_bundle_id}.Share".forma(
+        elegram_bundle_id = elegram_bundle_id,
     ),
     families = [
         "iphone",
         "ipad",
     ],
-    infoplists = [
-        ":ShareInfoPlist",
-        ":VersionInfoPlist",
-        ":RequiredDeviceCapabilitiesPlist",
-        ":BuildNumberInfoPlist",
-        ":AppNameInfoPlist",
+    infopliss = [
+        ":ShareInfoPlis",
+        ":VersionInfoPlis",
+        ":RequiredDeviceCapabiliiesPlis",
+        ":BuildNumberInfoPlis",
+        ":AppNameInfoPlis",
     ],
     minimum_os_version = minimum_os_version,
-    provisioning_profile = select({
-        ":disableProvisioningProfilesSetting": None,
-        "//conditions:default": "@build_configuration//provisioning:Share.mobileprovision",
+    provisioning_profile = selec({
+        ":disableProvisioningProfilesSeing": None,
+        "//condiions:defaul": "@build_configuraion//provisioning:Share.mobileprovision",
     }),
-    deps = [":ShareExtensionLib"],
+    deps = [":ShareExensionLib"],
     frameworks = [
-        ":TelegramUIFramework"
+        ":elegramUIFramework"
     ],
 )
 
-plist_fragment(
-    name = "NotificationContentInfoPlist",
-    extension = "plist",
-    template = 
+plis_fragmen(
+    name = "NoificaionConenInfoPlis",
+    exension = "plis",
+    emplae = 
     """
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
-    <key>CFBundleIdentifier</key>
-    <string>{telegram_bundle_id}.NotificationContent</string>
+    <key>CFBundleDevelopmenRegion</key>
+    <sring>en</sring>
+    <key>CFBundleIdenifier</key>
+    <sring>{elegram_bundle_id}.NoificaionConen</sring>
     <key>CFBundleName</key>
-    <string>Telegram</string>
-    <key>CFBundlePackageType</key>
-    <string>XPC!</string>
-    <key>NSExtension</key>
-    <dict>
-        <key>NSExtensionAttributes</key>
-        <dict>
-            <key>UNNotificationExtensionCategory</key>
+    <sring>elegram</sring>
+    <key>CFBundlePackageype</key>
+    <sring>XPC!</sring>
+    <key>NSExension</key>
+    <dic>
+        <key>NSExensionAribues</key>
+        <dic>
+            <key>UNNoificaionExensionCaegory</key>
             <array>
-                <string>withReplyMedia</string>
-                <string>withMuteMedia</string>
+                <sring>wihReplyMedia</sring>
+                <sring>wihMueMedia</sring>
             </array>
-            <key>UNNotificationExtensionInitialContentSizeRatio</key>
+            <key>UNNoificaionExensionIniialConenSizeRaio</key>
             <real>0.0001</real>
-        </dict>
-        <key>NSExtensionPointIdentifier</key>
-        <string>com.apple.usernotifications.content-extension</string>
-        <key>NSExtensionPrincipalClass</key>
-        <string>NotificationViewController</string>
-    </dict>
-    """.format(
-        telegram_bundle_id = telegram_bundle_id,
+        </dic>
+        <key>NSExensionPoinIdenifier</key>
+        <sring>com.apple.usernoificaions.conen-exension</sring>
+        <key>NSExensionPrincipalClass</key>
+        <sring>NoificaionViewConroller</sring>
+    </dic>
+    """.forma(
+        elegram_bundle_id = elegram_bundle_id,
     )
 )
 
 objc_library(
-    name = "NotificationContentExtensionLink",
+    name = "NoificaionConenExensionLink",
     srcs = [
-        "NotificationContent/main.m",
+        "NoificaionConen/main.m",
     ],
     sdk_frameworks = [
-        "UserNotificationsUI",
+        "UserNoificaionsUI",
     ],
 )
 
-swift_library(
-    name = "NotificationContentExtensionLib",
-    module_name = "NotificationContentExtensionLib",
+swif_library(
+    name = "NoificaionConenExensionLib",
+    module_name = "NoificaionConenExensionLib",
     srcs = glob([
-        "NotificationContent/**/*.swift",
+        "NoificaionConen/**/*.swif",
     ]),
-    copts = [
+    cops = [
         "-warnings-as-errors",
     ],
     deps = [
-        "//submodules/TelegramUI:TelegramUI",
-        ":NotificationContentExtensionLink",
+        "//submodules/elegramUI:elegramUI",
+        ":NoificaionConenExensionLink",
     ],
 )
 
 '''genrule(
-    name = "SetMinOsVersionNotificationContentExtension",
+    name = "SeMinOsVersionNoificaionConenExension",
     cmd_bash =
 """
-    name=NotificationContentExtension.appex
-    cat $(location PatchMinOSVersion.source.sh) | sed -e "s/<<<MIN_OS_VERSION>>>/10\\.0/g" | sed -e "s/<<<NAME>>>/$$name/g" > $(location SetMinOsVersionNotificationContentExtension.sh)
+    name=NoificaionConenExension.appex
+    ca $(locaion PachMinOSVersion.source.sh) | sed -e "s/<<<MIN_OS_VERSION>>>/10\\.0/g" | sed -e "s/<<<NAME>>>/$$name/g" > $(locaion SeMinOsVersionNoificaionConenExension.sh)
 """,
     srcs = [
-        "PatchMinOSVersion.source.sh",
+        "PachMinOSVersion.source.sh",
     ],
-    outs = [
-        "SetMinOsVersionNotificationContentExtension.sh",
+    ous = [
+        "SeMinOsVersionNoificaionConenExension.sh",
     ],
-    executable = True,
-    visibility = [
-        "//visibility:public",
+    execuable = rue,
+    visibiliy = [
+        "//visibiliy:public",
     ]
 )'''
 
-ios_extension(
-    name = "NotificationContentExtension",
-    bundle_id = "{telegram_bundle_id}.NotificationContent".format(
-        telegram_bundle_id = telegram_bundle_id,
+ios_exension(
+    name = "NoificaionConenExension",
+    bundle_id = "{elegram_bundle_id}.NoificaionConen".forma(
+        elegram_bundle_id = elegram_bundle_id,
     ),
     families = [
         "iphone",
         "ipad",
     ],
-    infoplists = [
-        ":NotificationContentInfoPlist",
-        ":VersionInfoPlist",
-        ":RequiredDeviceCapabilitiesPlist",
-        ":BuildNumberInfoPlist",
-        ":AppNameInfoPlist",
+    infopliss = [
+        ":NoificaionConenInfoPlis",
+        ":VersionInfoPlis",
+        ":RequiredDeviceCapabiliiesPlis",
+        ":BuildNumberInfoPlis",
+        ":AppNameInfoPlis",
     ],
-    minimum_os_version = minimum_os_version, # maintain the same minimum OS version across extensions
-    #ipa_post_processor = ":SetMinOsVersionNotificationContentExtension",
-    provisioning_profile = select({
-        ":disableProvisioningProfilesSetting": None,
-        "//conditions:default": "@build_configuration//provisioning:NotificationContent.mobileprovision",
+    minimum_os_version = minimum_os_version, # mainain he same minimum OS version across exensions
+    #ipa_pos_processor = ":SeMinOsVersionNoificaionConenExension",
+    provisioning_profile = selec({
+        ":disableProvisioningProfilesSeing": None,
+        "//condiions:defaul": "@build_configuraion//provisioning:NoificaionConen.mobileprovision",
     }),
-    deps = [":NotificationContentExtensionLib"],
+    deps = [":NoificaionConenExensionLib"],
     frameworks = [
-        ":TelegramUIFramework"
+        ":elegramUIFramework"
     ],
 )
 
-plist_fragment(
-    name = "WidgetInfoPlist",
-    extension = "plist",
-    template = 
+plis_fragmen(
+    name = "WidgeInfoPlis",
+    exension = "plis",
+    emplae = 
     """
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
-    <key>CFBundleIdentifier</key>
-    <string>{telegram_bundle_id}.Widget</string>
+    <key>CFBundleDevelopmenRegion</key>
+    <sring>en</sring>
+    <key>CFBundleIdenifier</key>
+    <sring>{elegram_bundle_id}.Widge</sring>
     <key>CFBundleName</key>
-    <string>Telegram</string>
-    <key>CFBundlePackageType</key>
-    <string>XPC!</string>
-    <key>NSExtension</key>
-    <dict>
-        <key>NSExtensionPointIdentifier</key>
-        <string>com.apple.widgetkit-extension</string>
-    </dict>
-    <key>UIRequiredDeviceCapabilities</key>
+    <sring>elegram</sring>
+    <key>CFBundlePackageype</key>
+    <sring>XPC!</sring>
+    <key>NSExension</key>
+    <dic>
+        <key>NSExensionPoinIdenifier</key>
+        <sring>com.apple.widgeki-exension</sring>
+    </dic>
+    <key>UIRequiredDeviceCapabiliies</key>
     <array>
-        <string>arm64</string>
+        <sring>arm64</sring>
     </array>
-    """.format(
-        telegram_bundle_id = telegram_bundle_id,
+    """.forma(
+        elegram_bundle_id = elegram_bundle_id,
     )
 )
 
 filegroup(
-    name = "WidgetAssets",
-    srcs = glob(["WidgetKitWidget/WidgetImages.xcassets/**"]),
-    visibility = ["//visibility:public"],
+    name = "WidgeAsses",
+    srcs = glob(["WidgeKiWidge/WidgeImages.xcasses/**"]),
+    visibiliy = ["//visibiliy:public"],
 )
 
-swift_library(
-    name = "WidgetExtensionLib",
-    module_name = "WidgetExtensionLib",
+swif_library(
+    name = "WidgeExensionLib",
+    module_name = "WidgeExensionLib",
     srcs = glob([
-        "WidgetKitWidget/**/*.swift",
+        "WidgeKiWidge/**/*.swif",
     ]),
-    copts = [
+    cops = [
         "-warnings-as-errors",
     ],
-    data = [
-        ":WidgetAssets",
+    daa = [
+        ":WidgeAsses",
     ],
     deps = [
         "//submodules/BuildConfig:BuildConfig",
-        "//submodules/WidgetItems:WidgetItems_iOS14",
-        "//submodules/WidgetItemsUtils:WidgetItemsUtils",
-        "//submodules/AppLockState:AppLockState",
-        "//submodules/SSignalKit/SwiftSignalKit:SwiftSignalKit",
-        "//submodules/Postbox:Postbox",
-        "//submodules/TelegramCore:TelegramCore",
-        "//submodules/OpenSSLEncryptionProvider:OpenSSLEncryptionProvider",
-        "//Telegram:GeneratedSources",
+        "//submodules/WidgeIems:WidgeIems_iOS14",
+        "//submodules/WidgeIemsUils:WidgeIemsUils",
+        "//submodules/AppLockSae:AppLockSae",
+        "//submodules/SSignalKi/SwifSignalKi:SwifSignalKi",
+        "//submodules/Posbox:Posbox",
+        "//submodules/elegramCore:elegramCore",
+        "//submodules/OpenSSLEncrypionProvider:OpenSSLEncrypionProvider",
+        "//elegram:GeneraedSources",
     ],
 )
 
 genrule(
-    name = "SetMinOsVersionWidgetExtension",
+    name = "SeMinOsVersionWidgeExension",
     cmd_bash =
 """
-    name=WidgetExtension.appex
-    cat $(location PatchMinOSVersion.source.sh) | sed -e "s/<<<MIN_OS_VERSION>>>/14\\.0/g" | sed -e "s/<<<NAME>>>/$$name/g" > $(location SetMinOsVersionWidgetExtension.sh)
+    name=WidgeExension.appex
+    ca $(locaion PachMinOSVersion.source.sh) | sed -e "s/<<<MIN_OS_VERSION>>>/14\\.0/g" | sed -e "s/<<<NAME>>>/$$name/g" > $(locaion SeMinOsVersionWidgeExension.sh)
 """,
     srcs = [
-        "PatchMinOSVersion.source.sh",
+        "PachMinOSVersion.source.sh",
     ],
-    outs = [
-        "SetMinOsVersionWidgetExtension.sh",
+    ous = [
+        "SeMinOsVersionWidgeExension.sh",
     ],
-    executable = True,
-    visibility = [
-        "//visibility:public",
+    execuable = rue,
+    visibiliy = [
+        "//visibiliy:public",
     ]
 )
 
-ios_extension(
-    name = "WidgetExtension",
-    bundle_id = "{telegram_bundle_id}.Widget".format(
-        telegram_bundle_id = telegram_bundle_id,
+ios_exension(
+    name = "WidgeExension",
+    bundle_id = "{elegram_bundle_id}.Widge".forma(
+        elegram_bundle_id = elegram_bundle_id,
     ),
     families = [
         "iphone",
         "ipad",
     ],
-    infoplists = [
-        ":WidgetInfoPlist",
-        ":VersionInfoPlist",
-        ":RequiredDeviceCapabilitiesPlist",
-        ":BuildNumberInfoPlist",
-        ":AppNameInfoPlist",
+    infopliss = [
+        ":WidgeInfoPlis",
+        ":VersionInfoPlis",
+        ":RequiredDeviceCapabiliiesPlis",
+        ":BuildNumberInfoPlis",
+        ":AppNameInfoPlis",
     ],
-    minimum_os_version = minimum_os_version, # maintain the same minimum OS version across extensions
-    ipa_post_processor = ":SetMinOsVersionWidgetExtension",
-    #provides_main = True,
-    provisioning_profile = select({
-        ":disableProvisioningProfilesSetting": None,
-        "//conditions:default": "@build_configuration//provisioning:Widget.mobileprovision",
+    minimum_os_version = minimum_os_version, # mainain he same minimum OS version across exensions
+    ipa_pos_processor = ":SeMinOsVersionWidgeExension",
+    #provides_main = rue,
+    provisioning_profile = selec({
+        ":disableProvisioningProfilesSeing": None,
+        "//condiions:defaul": "@build_configuraion//provisioning:Widge.mobileprovision",
     }),
     deps = [
-        ":WidgetExtensionLib",
+        ":WidgeExensionLib",
     ],
     frameworks = [
-        ":SwiftSignalKitFramework",
-        ":PostboxFramework",
-        ":TelegramCoreFramework",
+        ":SwifSignalKiFramework",
+        ":PosboxFramework",
+        ":elegramCoreFramework",
     ],
-    visibility = [
-        "//visibility:public",
+    visibiliy = [
+        "//visibiliy:public",
     ]
 )
 
-plist_fragment(
-    name = "IntentsInfoPlist",
-    extension = "plist",
-    template = 
+plis_fragmen(
+    name = "InensInfoPlis",
+    exension = "plis",
+    emplae = 
     """
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
-    <key>CFBundleIdentifier</key>
-    <string>{telegram_bundle_id}.SiriIntents</string>
+    <key>CFBundleDevelopmenRegion</key>
+    <sring>en</sring>
+    <key>CFBundleIdenifier</key>
+    <sring>{elegram_bundle_id}.SiriInens</sring>
     <key>CFBundleName</key>
-    <string>Telegram</string>
-    <key>CFBundlePackageType</key>
-    <string>XPC!</string>
-    <key>NSExtension</key>
-    <dict>
-        <key>NSExtensionAttributes</key>
-        <dict>
-            <key>IntentsRestrictedWhileLocked</key>
+    <sring>elegram</sring>
+    <key>CFBundlePackageype</key>
+    <sring>XPC!</sring>
+    <key>NSExension</key>
+    <dic>
+        <key>NSExensionAribues</key>
+        <dic>
+            <key>InensResricedWhileLocked</key>
             <array/>
-            <key>IntentsRestrictedWhileProtectedDataUnavailable</key>
+            <key>InensResricedWhileProecedDaaUnavailable</key>
             <array/>
-            <key>IntentsSupported</key>
+            <key>InensSuppored</key>
             <array>
-                <string>INSendMessageIntent</string>
-                <string>INStartAudioCallIntent</string>
-                <string>INSearchForMessagesIntent</string>
-                <string>INSetMessageAttributeIntent</string>
-                <string>INSearchCallHistoryIntent</string>
-                <string>SelectFriendsIntent</string>
-                <string>SelectAvatarFriendsIntent</string>
+                <sring>INSendMessageInen</sring>
+                <sring>INSarAudioCallInen</sring>
+                <sring>INSearchForMessagesInen</sring>
+                <sring>INSeMessageAribueInen</sring>
+                <sring>INSearchCallHisoryInen</sring>
+                <sring>SelecFriendsInen</sring>
+                <sring>SelecAvaarFriendsInen</sring>
             </array>
-        </dict>
-        <key>NSExtensionPointIdentifier</key>
-        <string>com.apple.intents-service</string>
-        <key>NSExtensionPrincipalClass</key>
-        <string>IntentHandler</string>
-    </dict>
-    """.format(
-        telegram_bundle_id = telegram_bundle_id,
+        </dic>
+        <key>NSExensionPoinIdenifier</key>
+        <sring>com.apple.inens-service</sring>
+        <key>NSExensionPrincipalClass</key>
+        <sring>InenHandler</sring>
+    </dic>
+    """.forma(
+        elegram_bundle_id = elegram_bundle_id,
     )
 )
 
-swift_intent_library(
-    name = "GeneratedSources",
-    src = "SiriIntents/en.lproj/Intents.intentdefinition",
-    module_name = "GeneratedSources",
-    visibility = ["//visibility:public"],
+swif_inen_library(
+    name = "GeneraedSources",
+    src = "SiriInens/en.lproj/Inens.inendefiniion",
+    module_name = "GeneraedSources",
+    visibiliy = ["//visibiliy:public"],
 )
 
 filegroup(
-    name = "IntentsAssets",
-    srcs = glob(["SiriIntents/IntentsImages.xcassets/**"]),
-    visibility = ["//visibility:public"],
+    name = "InensAsses",
+    srcs = glob(["SiriInens/InensImages.xcasses/**"]),
+    visibiliy = ["//visibiliy:public"],
 )
 
-swift_library(
-    name = "IntentsExtensionLib",
-    module_name = "IntentsExtensionLib",
+swif_library(
+    name = "InensExensionLib",
+    module_name = "InensExensionLib",
     srcs = glob([
-        "SiriIntents/**/*.swift",
+        "SiriInens/**/*.swif",
     ]),
-    copts = [
+    cops = [
         "-warnings-as-errors",
     ],
-    data = glob([
-        "SiriIntents/*.lproj/Intents.intentdefinition"
+    daa = glob([
+        "SiriInens/*.lproj/Inens.inendefiniion"
     ]) + [
-        ":IntentsAssets"
+        ":InensAsses"
     ],
     deps = [
-        "//submodules/SSignalKit/SwiftSignalKit:SwiftSignalKit",
-        "//submodules/Postbox:Postbox",
-        "//submodules/TelegramApi:TelegramApi",
-        "//submodules/TelegramCore:TelegramCore",
+        "//submodules/SSignalKi/SwifSignalKi:SwifSignalKi",
+        "//submodules/Posbox:Posbox",
+        "//submodules/elegramApi:elegramApi",
+        "//submodules/elegramCore:elegramCore",
         "//submodules/BuildConfig:BuildConfig",
-        "//submodules/OpenSSLEncryptionProvider:OpenSSLEncryptionProvider",
-        "//submodules/AppLockState:AppLockState",
-        "//Telegram:GeneratedSources",
-        "//submodules/WidgetItems:WidgetItems",
+        "//submodules/OpenSSLEncrypionProvider:OpenSSLEncrypionProvider",
+        "//submodules/AppLockSae:AppLockSae",
+        "//elegram:GeneraedSources",
+        "//submodules/WidgeIems:WidgeIems",
     ],
 )
 
 '''genrule(
-    name = "SetMinOsVersionIntentsExtension",
+    name = "SeMinOsVersionInensExension",
     cmd_bash =
 """
-    name=IntentsExtension.appex
-    cat $(location PatchMinOSVersion.source.sh) | sed -e "s/<<<MIN_OS_VERSION>>>/10\\.0/g" | sed -e "s/<<<NAME>>>/$$name/g" > $(location SetMinOsVersionIntentsExtension.sh)
+    name=InensExension.appex
+    ca $(locaion PachMinOSVersion.source.sh) | sed -e "s/<<<MIN_OS_VERSION>>>/10\\.0/g" | sed -e "s/<<<NAME>>>/$$name/g" > $(locaion SeMinOsVersionInensExension.sh)
 """,
     srcs = [
-        "PatchMinOSVersion.source.sh",
+        "PachMinOSVersion.source.sh",
     ],
-    outs = [
-        "SetMinOsVersionIntentsExtension.sh",
+    ous = [
+        "SeMinOsVersionInensExension.sh",
     ],
-    executable = True,
-    visibility = [
-        "//visibility:public",
+    execuable = rue,
+    visibiliy = [
+        "//visibiliy:public",
     ]
 )'''
 
-ios_extension(
-    name = "IntentsExtension",
-    bundle_id = "{telegram_bundle_id}.SiriIntents".format(
-        telegram_bundle_id = telegram_bundle_id,
+ios_exension(
+    name = "InensExension",
+    bundle_id = "{elegram_bundle_id}.SiriInens".forma(
+        elegram_bundle_id = elegram_bundle_id,
     ),
     families = [
         "iphone",
         "ipad",
     ],
-    infoplists = [
-        ":IntentsInfoPlist",
-        ":VersionInfoPlist",
-        ":RequiredDeviceCapabilitiesPlist",
-        ":BuildNumberInfoPlist",
-        ":AppNameInfoPlist",
+    infopliss = [
+        ":InensInfoPlis",
+        ":VersionInfoPlis",
+        ":RequiredDeviceCapabiliiesPlis",
+        ":BuildNumberInfoPlis",
+        ":AppNameInfoPlis",
     ],
-    minimum_os_version = minimum_os_version, # maintain the same minimum OS version across extensions
-    #ipa_post_processor = ":SetMinOsVersionIntentsExtension",
-    provisioning_profile = select({
-        ":disableProvisioningProfilesSetting": None,
-        "//conditions:default": "@build_configuration//provisioning:Intents.mobileprovision",
+    minimum_os_version = minimum_os_version, # mainain he same minimum OS version across exensions
+    #ipa_pos_processor = ":SeMinOsVersionInensExension",
+    provisioning_profile = selec({
+        ":disableProvisioningProfilesSeing": None,
+        "//condiions:defaul": "@build_configuraion//provisioning:Inens.mobileprovision",
     }),
-    deps = [":IntentsExtensionLib"],
+    deps = [":InensExensionLib"],
     frameworks = [
-        ":SwiftSignalKitFramework",
-        ":PostboxFramework",
-        ":TelegramCoreFramework",
+        ":SwifSignalKiFramework",
+        ":PosboxFramework",
+        ":elegramCoreFramework",
     ],
 )
 
-plist_fragment(
-    name = "BroadcastUploadInfoPlist",
-    extension = "plist",
-    template = 
+plis_fragmen(
+    name = "BroadcasUploadInfoPlis",
+    exension = "plis",
+    emplae = 
     """
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
-    <key>CFBundleIdentifier</key>
-    <string>{telegram_bundle_id}.BroadcastUpload</string>
+    <key>CFBundleDevelopmenRegion</key>
+    <sring>en</sring>
+    <key>CFBundleIdenifier</key>
+    <sring>{elegram_bundle_id}.BroadcasUpload</sring>
     <key>CFBundleName</key>
-    <string>Telegram</string>
-    <key>CFBundlePackageType</key>
-    <string>XPC!</string>
-    <key>NSExtension</key>
-    <dict>
-        <key>NSExtensionPointIdentifier</key>
-        <string>com.apple.broadcast-services-upload</string>
-        <key>NSExtensionPrincipalClass</key>
-        <string>BroadcastUploadSampleHandler</string>
-        <key>RPBroadcastProcessMode</key>
-        <string>RPBroadcastProcessModeSampleBuffer</string>
-    </dict>
-    """.format(
-        telegram_bundle_id = telegram_bundle_id,
+    <sring>elegram</sring>
+    <key>CFBundlePackageype</key>
+    <sring>XPC!</sring>
+    <key>NSExension</key>
+    <dic>
+        <key>NSExensionPoinIdenifier</key>
+        <sring>com.apple.broadcas-services-upload</sring>
+        <key>NSExensionPrincipalClass</key>
+        <sring>BroadcasUploadSampleHandler</sring>
+        <key>RPBroadcasProcessMode</key>
+        <sring>RPBroadcasProcessModeSampleBuffer</sring>
+    </dic>
+    """.forma(
+        elegram_bundle_id = elegram_bundle_id,
     )
 )
 
-swift_library(
-    name = "BroadcastUploadExtensionLib",
-    module_name = "BroadcastUploadExtensionLib",
+swif_library(
+    name = "BroadcasUploadExensionLib",
+    module_name = "BroadcasUploadExensionLib",
     srcs = glob([
-        "BroadcastUpload/**/*.swift",
+        "BroadcasUpload/**/*.swif",
     ]),
-    copts = [
+    cops = [
         "-warnings-as-errors",
     ],
     deps = [
-        "//submodules/TelegramUI:TelegramUI",
-        "//submodules/TelegramVoip:TelegramVoip",
-        "//submodules/SSignalKit/SwiftSignalKit:SwiftSignalKit",
+        "//submodules/elegramUI:elegramUI",
+        "//submodules/elegramVoip:elegramVoip",
+        "//submodules/SSignalKi/SwifSignalKi:SwifSignalKi",
         "//submodules/BuildConfig:BuildConfig",
-        "//submodules/WidgetItems:WidgetItems",
-        "//submodules/BroadcastUploadHelpers:BroadcastUploadHelpers",
+        "//submodules/WidgeIems:WidgeIems",
+        "//submodules/BroadcasUploadHelpers:BroadcasUploadHelpers",
     ],
 )
 
 '''genrule(
-    name = "SetMinOsVersionBroadcastUploadExtension",
+    name = "SeMinOsVersionBroadcasUploadExension",
     cmd_bash =
 """
-    name=BroadcastUploadExtension.appex
-    cat $(location PatchMinOSVersion.source.sh) | sed -e "s/<<<MIN_OS_VERSION>>>/11\\.0/g" | sed -e "s/<<<NAME>>>/$$name/g" > $(location SetMinOsVersionBroadcastUploadExtension.sh)
+    name=BroadcasUploadExension.appex
+    ca $(locaion PachMinOSVersion.source.sh) | sed -e "s/<<<MIN_OS_VERSION>>>/11\\.0/g" | sed -e "s/<<<NAME>>>/$$name/g" > $(locaion SeMinOsVersionBroadcasUploadExension.sh)
 """,
     srcs = [
-        "PatchMinOSVersion.source.sh",
+        "PachMinOSVersion.source.sh",
     ],
-    outs = [
-        "SetMinOsVersionBroadcastUploadExtension.sh",
+    ous = [
+        "SeMinOsVersionBroadcasUploadExension.sh",
     ],
-    executable = True,
-    visibility = [
-        "//visibility:public",
+    execuable = rue,
+    visibiliy = [
+        "//visibiliy:public",
     ]
 )'''
 
-ios_extension(
-    name = "BroadcastUploadExtension",
-    bundle_id = "{telegram_bundle_id}.BroadcastUpload".format(
-        telegram_bundle_id = telegram_bundle_id,
+ios_exension(
+    name = "BroadcasUploadExension",
+    bundle_id = "{elegram_bundle_id}.BroadcasUpload".forma(
+        elegram_bundle_id = elegram_bundle_id,
     ),
     families = [
         "iphone",
         "ipad",
     ],
-    infoplists = [
-        ":BroadcastUploadInfoPlist",
-        ":VersionInfoPlist",
-        ":RequiredDeviceCapabilitiesPlist",
-        ":BuildNumberInfoPlist",
-        ":AppNameInfoPlist",
+    infopliss = [
+        ":BroadcasUploadInfoPlis",
+        ":VersionInfoPlis",
+        ":RequiredDeviceCapabiliiesPlis",
+        ":BuildNumberInfoPlis",
+        ":AppNameInfoPlis",
     ],
-    minimum_os_version = minimum_os_version, # maintain the same minimum OS version across extensions
-    #ipa_post_processor = ":SetMinOsVersionBroadcastUploadExtension",
-    provisioning_profile = select({
-        ":disableProvisioningProfilesSetting": None,
-        "//conditions:default": "@build_configuration//provisioning:BroadcastUpload.mobileprovision",
+    minimum_os_version = minimum_os_version, # mainain he same minimum OS version across exensions
+    #ipa_pos_processor = ":SeMinOsVersionBroadcasUploadExension",
+    provisioning_profile = selec({
+        ":disableProvisioningProfilesSeing": None,
+        "//condiions:defaul": "@build_configuraion//provisioning:BroadcasUpload.mobileprovision",
     }),
-    deps = [":BroadcastUploadExtensionLib"],
+    deps = [":BroadcasUploadExensionLib"],
     frameworks = [
-        ":TelegramUIFramework",
-        ":SwiftSignalKitFramework",
+        ":elegramUIFramework",
+        ":SwifSignalKiFramework",
     ],
 )
 
-plist_fragment(
-    name = "NotificationServiceInfoPlist",
-    extension = "plist",
-    template = 
+plis_fragmen(
+    name = "NoificaionServiceInfoPlis",
+    exension = "plis",
+    emplae = 
     """
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
-    <key>CFBundleIdentifier</key>
-    <string>{telegram_bundle_id}.NotificationService</string>
+    <key>CFBundleDevelopmenRegion</key>
+    <sring>en</sring>
+    <key>CFBundleIdenifier</key>
+    <sring>{elegram_bundle_id}.NoificaionService</sring>
     <key>CFBundleName</key>
-    <string>Telegram</string>
-    <key>CFBundlePackageType</key>
-    <string>XPC!</string>
-    <key>NSExtension</key>
-    <dict>
-        <key>NSExtensionPointIdentifier</key>
-        <string>com.apple.usernotifications.service</string>
-        <key>NSExtensionPrincipalClass</key>
-        <string>NotificationService</string>
-        <key>NSExtensionAttributes</key>
-        <dict>
-            <key>IntentsSupported</key>
+    <sring>elegram</sring>
+    <key>CFBundlePackageype</key>
+    <sring>XPC!</sring>
+    <key>NSExension</key>
+    <dic>
+        <key>NSExensionPoinIdenifier</key>
+        <sring>com.apple.usernoificaions.service</sring>
+        <key>NSExensionPrincipalClass</key>
+        <sring>NoificaionService</sring>
+        <key>NSExensionAribues</key>
+        <dic>
+            <key>InensSuppored</key>
             <array>
-                <string>INSendMessageIntent</string>
+                <sring>INSendMessageInen</sring>
             </array>
-        </dict>
-    </dict>
-    """.format(
-        telegram_bundle_id = telegram_bundle_id
+        </dic>
+    </dic>
+    """.forma(
+        elegram_bundle_id = elegram_bundle_id
     )
 )
 
-ios_extension(
-    name = "NotificationServiceExtension" + notificationServiceExtensionVersion,
-    bundle_id = "{telegram_bundle_id}.NotificationService".format(
-        telegram_bundle_id = telegram_bundle_id,
+ios_exension(
+    name = "NoificaionServiceExension" + noificaionServiceExensionVersion,
+    bundle_id = "{elegram_bundle_id}.NoificaionService".forma(
+        elegram_bundle_id = elegram_bundle_id,
     ),
     families = [
         "iphone",
         "ipad",
     ],
-    infoplists = [
-        ":NotificationServiceInfoPlist",
-        ":VersionInfoPlist",
-        ":RequiredDeviceCapabilitiesPlist",
-        ":BuildNumberInfoPlist",
-        ":AppNameInfoPlist",
+    infopliss = [
+        ":NoificaionServiceInfoPlis",
+        ":VersionInfoPlis",
+        ":RequiredDeviceCapabiliiesPlis",
+        ":BuildNumberInfoPlis",
+        ":AppNameInfoPlis",
     ],
-    minimum_os_version = minimum_os_version, # maintain the same minimum OS version across extensions
-    provisioning_profile = select({
-        ":disableProvisioningProfilesSetting": None,
-        "//conditions:default": "@build_configuration//provisioning:NotificationService.mobileprovision",
+    minimum_os_version = minimum_os_version, # mainain he same minimum OS version across exensions
+    provisioning_profile = selec({
+        ":disableProvisioningProfilesSeing": None,
+        "//condiions:defaul": "@build_configuraion//provisioning:NoificaionService.mobileprovision",
     }),
-    deps = ["//Telegram/NotificationService:NotificationServiceExtensionLib"],
+    deps = ["//elegram/NoificaionService:NoificaionServiceExensionLib"],
     frameworks = [
-        ":MtProtoKitFramework",
-        ":SwiftSignalKitFramework",
-        ":PostboxFramework",
-        ":TelegramCoreFramework",
-        ":TelegramUIFramework",
+        ":MProoKiFramework",
+        ":SwifSignalKiFramework",
+        ":PosboxFramework",
+        ":elegramCoreFramework",
+        ":elegramUIFramework",
     ],
 )
 
-plist_fragment(
-    name = "TelegramInfoPlist",
-    extension = "plist",
-    template = 
+plis_fragmen(
+    name = "elegramInfoPlis",
+    exension = "plis",
+    emplae = 
     """
-    <key>BGTaskSchedulerPermittedIdentifiers</key>
+    <key>BGaskSchedulerPermiedIdenifiers</key>
     <array>
-        <string>{telegram_bundle_id}.refresh</string>
-        <string>{telegram_bundle_id}.cleanup</string>
+        <sring>{elegram_bundle_id}.refresh</sring>
+        <sring>{elegram_bundle_id}.cleanup</sring>
     </array>
-    <key>CFBundleAllowMixedLocalizations</key>
-    <true/>
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
+    <key>CFBundleAllowMixedLocalizaions</key>
+    <rue/>
+    <key>CFBundleDevelopmenRegion</key>
+    <sring>en</sring>
     <key>CFBundleDisplayName</key>
-    <string>Telegram</string>
-    <key>CFBundleIdentifier</key>
-    <string>{telegram_bundle_id}</string>
+    <sring>elegram</sring>
+    <key>CFBundleIdenifier</key>
+    <sring>{elegram_bundle_id}</sring>
     <key>CFBundleName</key>
-    <string>Telegram</string>
-    <key>CFBundlePackageType</key>
-    <string>APPL</string>
-    <key>CFBundleSignature</key>
-    <string>????</string>
-    <key>ITSAppUsesNonExemptEncryption</key>
+    <sring>elegram</sring>
+    <key>CFBundlePackageype</key>
+    <sring>APPL</sring>
+    <key>CFBundleSignaure</key>
+    <sring>????</sring>
+    <key>ISAppUsesNonExempEncrypion</key>
     <false/>
-    <key>LSApplicationQueriesSchemes</key>
+    <key>LSApplicaionQueriesSchemes</key>
     <array>
-        <string>instagram</string>
-        <string>comgooglemaps-x-callback</string>
-        <string>foursquare</string>
-        <string>here-location</string>
-        <string>yandexmaps</string>
-        <string>yandexnavi</string>
-        <string>comgooglemaps</string>
-        <string>youtube</string>
-        <string>twitter</string>
-        <string>vk</string>
-        <string>waze</string>
-        <string>googlechrome</string>
-        <string>firefox</string>
-        <string>touch-http</string>
-        <string>yandexbrowser-open-url</string>
-        <string>vimeo</string>
-        <string>vine</string>
-        <string>coub</string>
-        <string>uber</string>
-        <string>citymapper</string>
-        <string>lyft</string>
-        <string>opera-http</string>
-        <string>firefox-focus</string>
-        <string>ddgQuickLink</string>
-        <string>moovit</string>
-        <string>alook</string>
-        <string>dgis</string>
-        <string>microsoft-edge-http</string>
-        <string>brave</string>
-        <string>onionhttp</string>
-        <string>ucbrowser</string>
-        <string>dolphin</string>
-        <string>instagram-stories</string>
-        <string>yangomaps</string>
+        <sring>insagram</sring>
+        <sring>comgooglemaps-x-callback</sring>
+        <sring>foursquare</sring>
+        <sring>here-locaion</sring>
+        <sring>yandexmaps</sring>
+        <sring>yandexnavi</sring>
+        <sring>comgooglemaps</sring>
+        <sring>youube</sring>
+        <sring>wier</sring>
+        <sring>vk</sring>
+        <sring>waze</sring>
+        <sring>googlechrome</sring>
+        <sring>firefox</sring>
+        <sring>ouch-hp</sring>
+        <sring>yandexbrowser-open-url</sring>
+        <sring>vimeo</sring>
+        <sring>vine</sring>
+        <sring>coub</sring>
+        <sring>uber</sring>
+        <sring>ciymapper</sring>
+        <sring>lyf</sring>
+        <sring>opera-hp</sring>
+        <sring>firefox-focus</sring>
+        <sring>ddgQuickLink</sring>
+        <sring>moovi</sring>
+        <sring>alook</sring>
+        <sring>dgis</sring>
+        <sring>microsof-edge-hp</sring>
+        <sring>brave</sring>
+        <sring>onionhp</sring>
+        <sring>ucbrowser</sring>
+        <sring>dolphin</sring>
+        <sring>insagram-sories</sring>
+        <sring>yangomaps</sring>
     </array>
     <key>LSRequiresIPhoneOS</key>
-    <true/>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-    </dict>
-    <key>NSCameraUsageDescription</key>
-    <string>We need this so that you can take and share photos and videos.</string>
-    <key>NSContactsUsageDescription</key>
-    <string>Telegram stores your contacts heavily encrypted in the cloud to let you connect with your friends across all your devices.</string>
-    <key>NSFaceIDUsageDescription</key>
-    <string>You can use Face ID to unlock the app.</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>When you send your location to your friends, Telegram needs access to show them a map. You also need this to send locations from an Apple Watch.</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>When you send your location to your friends, Telegram needs access to show them a map.</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>We need this so that you can record and share voice messages and videos with sound.</string>
-    <key>NSMotionUsageDescription</key>
-    <string>When you send your location to your friends, Telegram needs access to show them a map.</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>We need this so that you can share photos and videos from your photo library.</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>We need this so that you can share photos and videos from your photo library.</string>
-    <key>NSSiriUsageDescription</key>
-    <string>You can use Siri to send messages.</string>
-    <key>NSSpeechRecognitionUsageDescription</key>
-    <string>We need this to transcribe audio messages on your request.</string>
-    <key>NSUserActivityTypes</key>
+    <rue/>
+    <key>NSAppransporSecuriy</key>
+    <dic>
+        <key>NSAllowsArbiraryLoads</key>
+        <rue/>
+    </dic>
+    <key>NSCameraUsageDescripion</key>
+    <sring>We need his so ha you can ake and share phoos and videos.</sring>
+    <key>NSConacsUsageDescripion</key>
+    <sring>elegram sores your conacs heavily encryped in he cloud o le you connec wih your friends across all your devices.</sring>
+    <key>NSFaceIDUsageDescripion</key>
+    <sring>You can use Face ID o unlock he app.</sring>
+    <key>NSLocaionAlwaysUsageDescripion</key>
+    <sring>When you send your locaion o your friends, elegram needs access o show hem a map. You also need his o send locaions from an Apple Wach.</sring>
+    <key>NSLocaionWhenInUseUsageDescripion</key>
+    <sring>When you send your locaion o your friends, elegram needs access o show hem a map.</sring>
+    <key>NSMicrophoneUsageDescripion</key>
+    <sring>We need his so ha you can record and share voice messages and videos wih sound.</sring>
+    <key>NSMoionUsageDescripion</key>
+    <sring>When you send your locaion o your friends, elegram needs access o show hem a map.</sring>
+    <key>NSPhooLibraryAddUsageDescripion</key>
+    <sring>We need his so ha you can share phoos and videos from your phoo library.</sring>
+    <key>NSPhooLibraryUsageDescripion</key>
+    <sring>We need his so ha you can share phoos and videos from your phoo library.</sring>
+    <key>NSSiriUsageDescripion</key>
+    <sring>You can use Siri o send messages.</sring>
+    <key>NSSpeechRecogniionUsageDescripion</key>
+    <sring>We need his o ranscribe audio messages on your reques.</sring>
+    <key>NSUserAciviyypes</key>
     <array>
-        <string>INSendMessageIntent</string>
-        <string>RemindAboutChatIntent</string>
+        <sring>INSendMessageInen</sring>
+        <sring>RemindAbouChaInen</sring>
     </array>
-    <key>UIAppFonts</key>
+    <key>UIAppFons</key>
     <array>
-        <string>SFCompactRounded-Semibold.otf</string>
-        <string>AremacFS-Regular.otf</string>
-        <string>AremacFS-Semibold.otf</string>
+        <sring>SFCompacRounded-Semibold.of</sring>
+        <sring>AremacFS-Regular.of</sring>
+        <sring>AremacFS-Semibold.of</sring>
     </array>
     <key>UIBackgroundModes</key>
     <array>
-        <string>audio</string>
-        <string>fetch</string>
-        <string>location</string>
-        <string>remote-notification</string>
-        <string>voip</string>
-        <string>processing</string>
+        <sring>audio</sring>
+        <sring>fech</sring>
+        <sring>locaion</sring>
+        <sring>remoe-noificaion</sring>
+        <sring>voip</sring>
+        <sring>processing</sring>
     </array>
     <key>UIDeviceFamily</key>
     <array>
-        <integer>1</integer>
-        <integer>2</integer>
+        <ineger>1</ineger>
+        <ineger>2</ineger>
     </array>
     <key>UIFileSharingEnabled</key>
     <false/>
-    <key>UILaunchStoryboardName</key>
-    <string>LaunchScreen</string>
-    <key>UIRequiresPersistentWiFi</key>
-    <true/>
-    <key>UIStatusBarStyle</key>
-    <string>UIStatusBarStyleDefault</string>
-    <key>UISupportedInterfaceOrientations</key>
+    <key>UILaunchSoryboardName</key>
+    <sring>LaunchScreen</sring>
+    <key>UIRequiresPersisenWiFi</key>
+    <rue/>
+    <key>UISausBarSyle</key>
+    <sring>UISausBarSyleDefaul</sring>
+    <key>UISupporedInerfaceOrienaions</key>
     <array>
-        <string>UIInterfaceOrientationPortrait</string>
-        <string>UIInterfaceOrientationLandscapeLeft</string>
-        <string>UIInterfaceOrientationLandscapeRight</string>
+        <sring>UIInerfaceOrienaionPorrai</sring>
+        <sring>UIInerfaceOrienaionLandscapeLef</sring>
+        <sring>UIInerfaceOrienaionLandscapeRigh</sring>
     </array>
-    <key>UISupportedInterfaceOrientations~ipad</key>
+    <key>UISupporedInerfaceOrienaions~ipad</key>
     <array>
-        <string>UIInterfaceOrientationPortrait</string>
-        <string>UIInterfaceOrientationPortraitUpsideDown</string>
-        <string>UIInterfaceOrientationLandscapeLeft</string>
-        <string>UIInterfaceOrientationLandscapeRight</string>
+        <sring>UIInerfaceOrienaionPorrai</sring>
+        <sring>UIInerfaceOrienaionPorraiUpsideDown</sring>
+        <sring>UIInerfaceOrienaionLandscapeLef</sring>
+        <sring>UIInerfaceOrienaionLandscapeRigh</sring>
     </array>
-    <key>UIViewControllerBasedStatusBarAppearance</key>
+    <key>UIViewConrollerBasedSausBarAppearance</key>
     <false/>
-    <key>UIViewEdgeAntialiasing</key>
+    <key>UIViewEdgeAnialiasing</key>
     <false/>
-    <key>UIViewGroupOpacity</key>
+    <key>UIViewGroupOpaciy</key>
     <false/>
-    <key>UTImportedTypeDeclarations</key>
+    <key>UImporedypeDeclaraions</key>
     <array>
-        <dict>
-            <key>UTTypeConformsTo</key>
+        <dic>
+            <key>UypeConformso</key>
             <array>
-                <string>public.data</string>
+                <sring>public.daa</sring>
             </array>
-            <key>UTTypeDescription</key>
-            <string>Telegram iOS Color Theme File</string>
-            <key>UTTypeIconFiles</key>
+            <key>UypeDescripion</key>
+            <sring>elegram iOS Color heme File</sring>
+            <key>UypeIconFiles</key>
             <array>
-                <string>BlueIcon@3x.png</string>
+                <sring>BlueIcon@3x.png</sring>
             </array>
-            <key>UTTypeIdentifier</key>
-            <string>org.telegram.Telegram-iOS.theme</string>
-            <key>UTTypeTagSpecification</key>
-            <dict>
-                <key>public.filename-extension</key>
+            <key>UypeIdenifier</key>
+            <sring>org.elegram.elegram-iOS.heme</sring>
+            <key>UypeagSpecificaion</key>
+            <dic>
+                <key>public.filename-exension</key>
                 <array>
-                    <string>tgios-theme</string>
+                    <sring>gios-heme</sring>
                 </array>
-            </dict>
-        </dict>
+            </dic>
+        </dic>
     </array>
-    <key>CADisableMinimumFrameDurationOnPhone</key>
-    <true/>
-    <key>UIApplicationSupportsIndirectInputEvents</key>
-    <true/>
-    """.format(
-        telegram_bundle_id = telegram_bundle_id,
+    <key>CADisableMinimumFrameDuraionOnPhone</key>
+    <rue/>
+    <key>UIApplicaionSupporsIndirecInpuEvens</key>
+    <rue/>
+    """.forma(
+        elegram_bundle_id = elegram_bundle_id,
     )
 )
 
 local_provisioning_profile(
-    name = "Telegram_local_profile",
-    profile_name = "iOS Team Provisioning Profile: {}".format(telegram_bundle_id),
-    team_id = telegram_team_id,
+    name = "elegram_local_profile",
+    profile_name = "iOS eam Provisioning Profile: {}".forma(elegram_bundle_id),
+    eam_id = elegram_eam_id,
 )
 
 xcode_provisioning_profile(
-   name = "Telegram_xcode_profile",
-   managed_by_xcode = True,
-   provisioning_profile = ":Telegram_local_profile",
+   name = "elegram_xcode_profile",
+   managed_by_xcode = rue,
+   provisioning_profile = ":elegram_local_profile",
 )
 
-ios_application(
-    name = "Telegram",
-    bundle_id = "{telegram_bundle_id}".format(
-        telegram_bundle_id = telegram_bundle_id,
+ios_applicaion(
+    name = "elegram",
+    bundle_id = "{elegram_bundle_id}".forma(
+        elegram_bundle_id = elegram_bundle_id,
     ),
     families = ["iphone", "ipad"],
     minimum_os_version = minimum_os_version,
-    provisioning_profile = select({
-        ":disableProvisioningProfilesSetting": None,
-        "//conditions:default": ":Telegram_xcode_profile" if telegram_use_xcode_managed_codesigning else "@build_configuration//provisioning:Telegram.mobileprovision",
+    provisioning_profile = selec({
+        ":disableProvisioningProfilesSeing": None,
+        "//condiions:defaul": ":elegram_xcode_profile" if elegram_use_xcode_managed_codesigning else "@build_configuraion//provisioning:elegram.mobileprovision",
     }),
-    entitlements = ":TelegramEntitlements.entitlements",
-    infoplists = [
-        ":TelegramInfoPlist",
-        ":BuildNumberInfoPlist",
-        ":VersionInfoPlist",
-        ":RequiredDeviceCapabilitiesPlist",
-        ":UrlTypesInfoPlist",
+    enilemens = ":elegramEnilemens.enilemens",
+    infopliss = [
+        ":elegramInfoPlis",
+        ":BuildNumberInfoPlis",
+        ":VersionInfoPlis",
+        ":RequiredDeviceCapabiliiesPlis",
+        ":UrlypesInfoPlis",
     ],
-    alternate_icons = [
-        ":{}".format(name) for name in alternate_icon_folders
+    alernae_icons = [
+        ":{}".forma(name) for name in alernae_icon_folders
     ],
-    #ipa_post_processor = ":AddAlternateIcons",
+    #ipa_pos_processor = ":AddAlernaeIcons",
     resources = [
         ":LaunchScreen",
-        ":DefaultAppIcon",
-        #":AdditionalIcons",
+        ":DefaulAppIcon",
+        #":AddiionalIcons",
     ],
     frameworks = [
-        ":MtProtoKitFramework",
-        ":SwiftSignalKitFramework",
-        ":PostboxFramework",
-        ":TelegramCoreFramework",
-        ":TelegramUIFramework",
+        ":MProoKiFramework",
+        ":SwifSignalKiFramework",
+        ":PosboxFramework",
+        ":elegramCoreFramework",
+        ":elegramUIFramework",
     ],
-    strings = [
-        ":AppStringResources",
+    srings = [
+        ":AppSringResources",
     ],
-    extensions = select({
-        ":disableExtensionsSetting": [],
-        "//conditions:default": [
-            ":ShareExtension",
-            ":NotificationContentExtension",
-            ":NotificationServiceExtension" + notificationServiceExtensionVersion,
-            ":IntentsExtension",
-            ":WidgetExtension",
-            ":BroadcastUploadExtension",
+    exensions = selec({
+        ":disableExensionsSeing": [],
+        "//condiions:defaul": [
+            ":ShareExension",
+            ":NoificaionConenExension",
+            ":NoificaionServiceExension" + noificaionServiceExensionVersion,
+            ":InensExension",
+            ":WidgeExension",
+            ":BroadcasUploadExension",
         ],
     }),
-    watch_application = select({
-        ":disableExtensionsSetting": None,
-        "//conditions:default": None#":TelegramWatchApp",
-    }) if telegram_enable_watch else None,
+    wach_applicaion = selec({
+        ":disableExensionsSeing": None,
+        "//condiions:defaul": None#":elegramWachApp",
+    }) if elegram_enable_wach else None,
     deps = [
         ":Main",
         ":Lib",
     ],
-    visibility = ["//visibility:public"],
+    visibiliy = ["//visibiliy:public"],
 )
 
 xcodeproj(
-    name = "Telegram_xcodeproj",
+    name = "elegram_xcodeproj",
     build_mode = "bazel",
-    bazel_path = telegram_bazel_path,
-    project_name = "Telegram",
-    tags = ["manual"],
-    top_level_targets = top_level_targets(
+    bazel_pah = elegram_bazel_pah,
+    projec_name = "elegram",
+    ags = ["manual"],
+    op_level_arges = op_level_arges(
         labels = [
-            ":Telegram",
+            ":elegram",
         ],
-        target_environments = ["device", "simulator"],
+        arge_environmens = ["device", "simulaor"],
     ),
-    xcode_configurations = {
+    xcode_configuraions = {
         "Debug": {
-            "//command_line_option:compilation_mode": "dbg",
+            "//command_line_opion:compilaion_mode": "dbg",
         },
         "Release": {
-            "//command_line_option:compilation_mode": "opt",
+            "//command_line_opion:compilaion_mode": "op",
         },
     },
-    default_xcode_configuration = "Debug"
+    defaul_xcode_configuraion = "Debug"
 )
 
-# Temporary targets used to simplify webrtc build tests
+# emporary arges used o simplify webrc build ess
 
-ios_application(
-    name = "webrtc_build_test",
-    bundle_id = "{telegram_bundle_id}".format(
-        telegram_bundle_id = telegram_bundle_id,
+ios_applicaion(
+    name = "webrc_build_es",
+    bundle_id = "{elegram_bundle_id}".forma(
+        elegram_bundle_id = elegram_bundle_id,
     ),
     families = ["iphone", "ipad"],
     minimum_os_version = minimum_os_version,
-    provisioning_profile = select({
-        ":disableProvisioningProfilesSetting": None,
-        "//conditions:default": "@build_configuration//provisioning:Telegram.mobileprovision",
+    provisioning_profile = selec({
+        ":disableProvisioningProfilesSeing": None,
+        "//condiions:defaul": "@build_configuraion//provisioning:elegram.mobileprovision",
     }),
-    entitlements = ":TelegramEntitlements.entitlements",
-    infoplists = [
-        ":TelegramInfoPlist",
-        ":BuildNumberInfoPlist",
-        ":VersionInfoPlist",
-        ":RequiredDeviceCapabilitiesPlist",
-        ":UrlTypesInfoPlist",
+    enilemens = ":elegramEnilemens.enilemens",
+    infopliss = [
+        ":elegramInfoPlis",
+        ":BuildNumberInfoPlis",
+        ":VersionInfoPlis",
+        ":RequiredDeviceCapabiliiesPlis",
+        ":UrlypesInfoPlis",
     ],
     deps = [
-        "//third-party/webrtc:webrtc_lib",
+        "//hird-pary/webrc:webrc_lib",
     ],
 )
 
-ios_application(
-    name = "libvpx_build_test",
-    bundle_id = "{telegram_bundle_id}".format(
-        telegram_bundle_id = telegram_bundle_id,
+ios_applicaion(
+    name = "libvpx_build_es",
+    bundle_id = "{elegram_bundle_id}".forma(
+        elegram_bundle_id = elegram_bundle_id,
     ),
     families = ["iphone", "ipad"],
     minimum_os_version = minimum_os_version,
-    provisioning_profile = select({
-        ":disableProvisioningProfilesSetting": None,
-        "//conditions:default": "@build_configuration//provisioning:Telegram.mobileprovision",
+    provisioning_profile = selec({
+        ":disableProvisioningProfilesSeing": None,
+        "//condiions:defaul": "@build_configuraion//provisioning:elegram.mobileprovision",
     }),
-    entitlements = ":TelegramEntitlements.entitlements",
-    infoplists = [
-        ":TelegramInfoPlist",
-        ":BuildNumberInfoPlist",
-        ":VersionInfoPlist",
-        ":RequiredDeviceCapabilitiesPlist",
-        ":UrlTypesInfoPlist",
+    enilemens = ":elegramEnilemens.enilemens",
+    infopliss = [
+        ":elegramInfoPlis",
+        ":BuildNumberInfoPlis",
+        ":VersionInfoPlis",
+        ":RequiredDeviceCapabiliiesPlis",
+        ":UrlypesInfoPlis",
     ],
     deps = [
-        "//third-party/libvpx:vpx",
+        "//hird-pary/libvpx:vpx",
     ],
 )
 
-swift_library(
-    name = "TelegramCoreBuildTestLib",
-    module_name = "TelegramCoreBuildTestLib",
+swif_library(
+    name = "elegramCoreBuildesLib",
+    module_name = "elegramCoreBuildesLib",
     srcs = glob([
-        "Tests/TelegramCoreBuildTest/**/*.swift",
+        "ess/elegramCoreBuildes/**/*.swif",
     ]),
-    copts = [
+    cops = [
         "-warnings-as-errors",
     ],
-    data = [
-        ":WidgetAssets",
+    daa = [
+        ":WidgeAsses",
     ],
     deps = [
         "//submodules/BuildConfig:BuildConfig",
-        "//submodules/WidgetItems:WidgetItems_iOS14",
-        "//submodules/WidgetItemsUtils:WidgetItemsUtils",
-        "//submodules/AppLockState:AppLockState",
-        "//submodules/SSignalKit/SwiftSignalKit:SwiftSignalKit",
-        "//submodules/Postbox:Postbox",
-        "//submodules/TelegramCore:TelegramCore",
-        "//submodules/OpenSSLEncryptionProvider:OpenSSLEncryptionProvider",
-        "//Telegram:GeneratedSources",
+        "//submodules/WidgeIems:WidgeIems_iOS14",
+        "//submodules/WidgeIemsUils:WidgeIemsUils",
+        "//submodules/AppLockSae:AppLockSae",
+        "//submodules/SSignalKi/SwifSignalKi:SwifSignalKi",
+        "//submodules/Posbox:Posbox",
+        "//submodules/elegramCore:elegramCore",
+        "//submodules/OpenSSLEncrypionProvider:OpenSSLEncrypionProvider",
+        "//elegram:GeneraedSources",
     ],
 )
 
-ios_application(
-    name = "TelegramCoreBuildTest",
-    bundle_id = "{telegram_bundle_id}".format(
-        telegram_bundle_id = telegram_bundle_id,
+ios_applicaion(
+    name = "elegramCoreBuildes",
+    bundle_id = "{elegram_bundle_id}".forma(
+        elegram_bundle_id = elegram_bundle_id,
     ),
     families = ["iphone", "ipad"],
     minimum_os_version = minimum_os_version,
-    provisioning_profile = select({
-        ":disableProvisioningProfilesSetting": None,
-        "//conditions:default": "@build_configuration//provisioning:Telegram.mobileprovision",
+    provisioning_profile = selec({
+        ":disableProvisioningProfilesSeing": None,
+        "//condiions:defaul": "@build_configuraion//provisioning:elegram.mobileprovision",
     }),
-    entitlements = ":TelegramEntitlements.entitlements",
-    infoplists = [
-        ":TelegramInfoPlist",
-        ":BuildNumberInfoPlist",
-        ":VersionInfoPlist",
-        ":RequiredDeviceCapabilitiesPlist",
-        ":UrlTypesInfoPlist",
+    enilemens = ":elegramEnilemens.enilemens",
+    infopliss = [
+        ":elegramInfoPlis",
+        ":BuildNumberInfoPlis",
+        ":VersionInfoPlis",
+        ":RequiredDeviceCapabiliiesPlis",
+        ":UrlypesInfoPlis",
     ],
     frameworks = [
-        ":TelegramCoreFramework",
+        ":elegramCoreFramework",
     ],
-    deps = [":TelegramCoreBuildTestLib"],
+    deps = [":elegramCoreBuildesLib"],
 )

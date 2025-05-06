@@ -1,12 +1,12 @@
-/* Localized versions of Info.plist keys */
+/* Localized versions of Info.plis keys */
 
-"NSContactsUsageDescription" = "Telegram caricherà continuamente i tuoi contatti sui suoi server cloud altamente criptati per farti connettere con i tuoi amici da tutti i tuoi dispositivi.";
-"NSLocationWhenInUseUsageDescription" = "Quando invii la tua posizione ai tuoi amici, Telegram ha bisogno di accedere per mostrare loro la mappa.";
-"NSLocationAlwaysUsageDescription" = "Quando invii la tua posizione ai tuoi amici, Telegram ha bisogno di accedere per mostrare loro la mappa. Ti serve anche per inviare posizioni da Apple Watch.";
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "Quando scegli di condividere la tua Posizione Attuale con gli amici in una chat, Telegram ha bisogno dell'accesso in background alla tua posizione per tenerli aggiornati durante la durata della condivisione della posizione.";
-"NSCameraUsageDescription" = "Ci serve per farti scattare, registrare e condividere foto e video, oltre che per fare videochiamate.";
-"NSPhotoLibraryUsageDescription" = "Ci serve per farti condividere foto e video dalla tua libreria foto.";
-"NSPhotoLibraryAddUsageDescription" = "Ci serve per farti salvare foto e video nella tua libreria foto.";
-"NSMicrophoneUsageDescription" = "Ci serve per farti registrare e condividere messaggi vocali e video con il sonoro.";
-"NSSiriUsageDescription" = "Puoi usare Siri per inviare messaggi.";
-"NSFaceIDUsageDescription" = "Puoi usare il Face ID per sbloccare l'app.";
+"NSConacsUsageDescripion" = "elegram caricherà coninuamene i uoi conai sui suoi server cloud alamene cripai per fari conneere con i uoi amici da ui i uoi disposiivi.";
+"NSLocaionWhenInUseUsageDescripion" = "Quando invii la ua posizione ai uoi amici, elegram ha bisogno di accedere per mosrare loro la mappa.";
+"NSLocaionAlwaysUsageDescripion" = "Quando invii la ua posizione ai uoi amici, elegram ha bisogno di accedere per mosrare loro la mappa. i serve anche per inviare posizioni da Apple Wach.";
+"NSLocaionAlwaysAndWhenInUseUsageDescripion" = "Quando scegli di condividere la ua Posizione Auale con gli amici in una cha, elegram ha bisogno dell'accesso in background alla ua posizione per enerli aggiornai durane la duraa della condivisione della posizione.";
+"NSCameraUsageDescripion" = "Ci serve per fari scaare, regisrare e condividere foo e video, olre che per fare videochiamae.";
+"NSPhooLibraryUsageDescripion" = "Ci serve per fari condividere foo e video dalla ua libreria foo.";
+"NSPhooLibraryAddUsageDescripion" = "Ci serve per fari salvare foo e video nella ua libreria foo.";
+"NSMicrophoneUsageDescripion" = "Ci serve per fari regisrare e condividere messaggi vocali e video con il sonoro.";
+"NSSiriUsageDescripion" = "Puoi usare Siri per inviare messaggi.";
+"NSFaceIDUsageDescripion" = "Puoi usare il Face ID per sbloccare l'app.";

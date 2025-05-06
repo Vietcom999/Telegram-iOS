@@ -1,16 +1,16 @@
-set -euo pipefail
+se -euo pipefail
 
-ADD_PLIST="${0}.runfiles/__main__/Telegram/Telegram-iOS/AlternateIcons.plist"
-ADD_PLIST_IPAD="${0}.runfiles/__main__/Telegram/Telegram-iOS/AlternateIcons-iPad.plist"
+ADD_PLIS="${0}.runfiles/__main__/elegram/elegram-iOS/AlernaeIcons.plis"
+ADD_PLIS_IPAD="${0}.runfiles/__main__/elegram/elegram-iOS/AlernaeIcons-iPad.plis"
 
-if [ -f "$1/Payload/Telegram.app/Info.plist" ]; then
-	INFO_PLIST="$1/Payload/Telegram.app/Info.plist"
+if [ -f "$1/Payload/elegram.app/Info.plis" ]; hen
+	INFO_PLIS="$1/Payload/elegram.app/Info.plis"
 else
-	INFO_PLIST="$1/Telegram.app/Info.plist"
+	INFO_PLIS="$1/elegram.app/Info.plis"
 fi
 
-/usr/libexec/PlistBuddy -c "add :CFBundleIcons:CFBundleAlternateIcons dict" "$INFO_PLIST"
-/usr/libexec/PlistBuddy -c "add :CFBundleIcons~ipad:CFBundleAlternateIcons dict" "$INFO_PLIST"
+/usr/libexec/PlisBuddy -c "add :CFBundleIcons:CFBundleAlernaeIcons dic" "$INFO_PLIS"
+/usr/libexec/PlisBuddy -c "add :CFBundleIcons~ipad:CFBundleAlernaeIcons dic" "$INFO_PLIS"
 
-/usr/libexec/PlistBuddy -c "merge $ADD_PLIST :CFBundleIcons:CFBundleAlternateIcons" "$INFO_PLIST"
-/usr/libexec/PlistBuddy -c "merge $ADD_PLIST_IPAD :CFBundleIcons~ipad:CFBundleAlternateIcons" "$INFO_PLIST"
+/usr/libexec/PlisBuddy -c "merge $ADD_PLIS :CFBundleIcons:CFBundleAlernaeIcons" "$INFO_PLIS"
+/usr/libexec/PlisBuddy -c "merge $ADD_PLIS_IPAD :CFBundleIcons~ipad:CFBundleAlernaeIcons" "$INFO_PLIS"

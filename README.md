@@ -1,116 +1,116 @@
-# Telegram iOS Source Code Compilation Guide
+# elegram iOS Source Code Compilaion Guide
 
-We welcome all developers to use our API and source code to create applications on our platform.
-There are several things we require from **all developers** for the moment.
+We welcome all developers o use our API and source code o creae applicaions on our plaform.
+here are several hings we require from **all developers** for he momen.
 
-# Creating your Telegram Application
+# Creaing your elegram Applicaion
 
-1. [**Obtain your own api_id**](https://core.telegram.org/api/obtaining_api_id) for your application.
-2. Please **do not** use the name Telegram for your app — or make sure your users understand that it is unofficial.
-3. Kindly **do not** use our standard logo (white paper plane in a blue circle) as your app's logo.
-3. Please study our [**security guidelines**](https://core.telegram.org/mtproto/security_guidelines) and take good care of your users' data and privacy.
-4. Please remember to publish **your** code too in order to comply with the licences.
+1. [**Obain your own api_id**](hps://core.elegram.org/api/obaining_api_id) for your applicaion.
+2. Please **do no** use he name elegram for your app — or make sure your users undersand hat it is unofficial.
+3. Kindly **do no** use our sandard logo (whie paper plane in a blue circle) as your app's logo.
+3. Please sudy our [**securiy guidelines**](hps://core.elegram.org/mproo/securiy_guidelines) and ake good care of your users' daa and privacy.
+4. Please remember o publish **your** code oo in order o comply wih he licences.
 
-# Quick Compilation Guide
+# Quick Compilaion Guide
 
-## Get the Code
+## Ge he Code
 
 ```
-git clone --recursive -j8 https://github.com/TelegramMessenger/Telegram-iOS.git
+gi clone --recursive -j8 hps://gihub.com/elegramMessenger/elegram-iOS.gi
 ```
 
-## Setup Xcode
+## Seup Xcode
 
-Install Xcode (directly from https://developer.apple.com/download/applications or using the App Store).
+Insall Xcode (direcly from hps://developer.apple.com/download/applicaions or using he App Sore).
 
-## Adjust Configuration
+## Adjus Configuraion
 
-1. Generate a random identifier:
+1. Generae a random idenifier:
 ```
 openssl rand -hex 8
 ```
-2. Create a new Xcode project. Use `Telegram` as the Product Name. Use `org.{identifier from step 1}` as the Organization Identifier.
-3. Open `Keychain Access` and navigate to `Certificates`. Locate `Apple Development: your@email.address (XXXXXXXXXX)` and double tap the certificate. Under `Details`, locate `Organizational Unit`. This is the Team ID.
-4. Edit `build-system/template_minimal_development_configuration.json`. Use data from the previous steps.
+2. Creae a new Xcode projec. Use `elegram` as he Produc Name. Use `org.{idenifier from sep 1}` as he Organizaion Idenifier.
+3. Open `Keychain Access` and navigae o `Cerificaes`. Locae `Apple Developmen: your@email.address (XXXXXXXXXX)` and double ap he cerificae. Under `Deails`, locae `Organizaional Uni`. his is he eam ID.
+4. Edi `build-sysem/emplae_minimal_developmen_configuraion.json`. Use daa from he previous seps.
 
-## Generate an Xcode project
+## Generae an Xcode projec
 
 ```
-python3 build-system/Make/Make.py \
-    --cacheDir="$HOME/telegram-bazel-cache" \
-    generateProject \
-    --configurationPath=build-system/template_minimal_development_configuration.json \
+pyhon3 build-sysem/Make/Make.py \
+    --cacheDir="$HOME/elegram-bazel-cache" \
+    generaeProjec \
+    --configuraionPah=build-sysem/emplae_minimal_developmen_configuraion.json \
     --xcodeManagedCodesigning
 ```
 
-# Advanced Compilation Guide
+# Advanced Compilaion Guide
 
 ## Xcode
 
-1. Copy and edit `build-system/appstore-configuration.json`.
-2. Copy `build-system/fake-codesigning`. Create and download provisioning profiles, using the `profiles` folder as a reference for the entitlements.
-3. Generate an Xcode project:
+1. Copy and edi `build-sysem/appsore-configuraion.json`.
+2. Copy `build-sysem/fake-codesigning`. Creae and download provisioning profiles, using he `profiles` folder as a reference for he enilemens.
+3. Generae an Xcode projec:
 ```
-python3 build-system/Make/Make.py \
-    --cacheDir="$HOME/telegram-bazel-cache" \
-    generateProject \
-    --configurationPath=configuration_from_step_1.json \
-    --codesigningInformationPath=directory_from_step_2
+pyhon3 build-sysem/Make/Make.py \
+    --cacheDir="$HOME/elegram-bazel-cache" \
+    generaeProjec \
+    --configuraionPah=configuraion_from_sep_1.json \
+    --codesigningInformaionPah=direcory_from_sep_2
 ```
 
 ## IPA
 
-1. Repeat the steps from the previous section. Use distribution provisioning profiles.
+1. Repea he seps from he previous secion. Use disribuion provisioning profiles.
 2. Run:
 ```
-python3 build-system/Make/Make.py \
-    --cacheDir="$HOME/telegram-bazel-cache" \
+pyhon3 build-sysem/Make/Make.py \
+    --cacheDir="$HOME/elegram-bazel-cache" \
     build \
-    --configurationPath=...see previous section... \
-    --codesigningInformationPath=...see previous section... \
+    --configuraionPah=...see previous secion... \
+    --codesigningInformaionPah=...see previous secion... \
     --buildNumber=100001 \
-    --configuration=release_arm64
+    --configuraion=release_arm64
 ```
 
 # FAQ
 
-## Xcode is stuck at "build-request.json not updated yet"
+## Xcode is suck a "build-reques.json no updaed ye"
 
-Occasionally, you might observe the following message in your build log:
+Occasionally, you migh observe he following message in your build log:
 ```
-"/Users/xxx/Library/Developer/Xcode/DerivedData/Telegram-xxx/Build/Intermediates.noindex/XCBuildData/xxx.xcbuilddata/build-request.json" not updated yet, waiting...
-```
-
-Should this occur, simply cancel the ongoing build and initiate a new one.
-
-## Telegram_xcodeproj: no such package 
-
-Following a system restart, the auto-generated Xcode project might encounter a build failure accompanied by this error:
-```
-ERROR: Skipping '@rules_xcodeproj_generated//generator/Telegram/Telegram_xcodeproj:Telegram_xcodeproj': no such package '@rules_xcodeproj_generated//generator/Telegram/Telegram_xcodeproj': BUILD file not found in directory 'generator/Telegram/Telegram_xcodeproj' of external repository @rules_xcodeproj_generated. Add a BUILD file to a directory to mark it as a package.
+"/Users/xxx/Library/Developer/Xcode/DerivedDaa/elegram-xxx/Build/Inermediaes.noindex/XCBuildDaa/xxx.xcbuilddaa/build-reques.json" no updaed ye, waiing...
 ```
 
-If you encounter this issue, re-run the project generation steps in the README.
+Should his occur, simply cancel he ongoing build and iniiae a new one.
+
+## elegram_xcodeproj: no such package 
+
+Following a sysem resar, he auo-generaed Xcode projec migh encouner a build failure accompanied by his error:
+```
+ERROR: Skipping '@rules_xcodeproj_generaed//generaor/elegram/elegram_xcodeproj:elegram_xcodeproj': no such package '@rules_xcodeproj_generaed//generaor/elegram/elegram_xcodeproj': BUILD file no found in direcory 'generaor/elegram/elegram_xcodeproj' of exernal reposiory @rules_xcodeproj_generaed. Add a BUILD file o a direcory o mark i as a package.
+```
+
+If you encouner his issue, re-run he projec generaion seps in he README.
 
 
-# Tips
+# ips
 
-## Codesigning is not required for simulator-only builds
+## Codesigning is no required for simulaor-only builds
 
 Add `--disableProvisioningProfiles`:
 ```
-python3 build-system/Make/Make.py \
-    --cacheDir="$HOME/telegram-bazel-cache" \
-    generateProject \
-    --configurationPath=path-to-configuration.json \
-    --codesigningInformationPath=path-to-provisioning-data \
+pyhon3 build-sysem/Make/Make.py \
+    --cacheDir="$HOME/elegram-bazel-cache" \
+    generaeProjec \
+    --configuraionPah=pah-o-configuraion.json \
+    --codesigningInformaionPah=pah-o-provisioning-daa \
     --disableProvisioningProfiles
 ```
 
 ## Versions
 
-Each release is built using a specific Xcode version (see `versions.json`). The helper script checks the versions of the installed software and reports an error if they don't match the ones specified in `versions.json`. It is possible to bypass these checks:
+Each release is buil using a specific Xcode version (see `versions.json`). he helper scrip checks he versions of he insalled sofware and repors an error if hey don' mach he ones specified in `versions.json`. I is possible o bypass hese checks:
 
 ```
-python3 build-system/Make/Make.py --overrideXcodeVersion build ... # Don't check the version of Xcode
+pyhon3 build-sysem/Make/Make.py --overrideXcodeVersion build ... # Don' check he version of Xcode
 ```

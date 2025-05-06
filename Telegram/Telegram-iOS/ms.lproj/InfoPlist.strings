@@ -1,12 +1,12 @@
-/* Localized versions of Info.plist keys */
+/* Localized versions of Info.plis keys */
 
-"NSContactsUsageDescription" = "Telegram akan sentiasa muat naik kenalan anda ke pelayan awan yang berenkripsi tinggi agar anda boleh berhubung dengan rakan anda di semua peranti anda.";
-"NSLocationWhenInUseUsageDescription" = "Bila anda hantar lokasi anda kepada rakan anda, Telegram perlukan akses untuk tunjuk peta.";
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "Bila anda pilih untuk kongsi Lokasi Langsung anda dengan rakan dalam chat, Telegram perlu akses latar belakang ke lokasi anda agar lokasi anda sentiasa dikemaskini ketika perkongsian.";
-"NSLocationAlwaysUsageDescription" = "Bila anda pilih untuk kongsi lokasi langsung anda dengan rakan dalam chat, Telegram perlu akses latar belakang agar lokasi anda sentiasa dikemaskini. Anda juga harus hantar lokasi anda ke Jam Apple.";
-"NSCameraUsageDescription" = "Kita perlukan ini agar anda boleh ambil dan kongsi foto dan video, dan juga buat panggilan video.";
-"NSPhotoLibraryUsageDescription" = "Kita perlu ini agar anda boleh kongsi foto dan video dari librari foto anda.";
-"NSPhotoLibraryAddUsageDescription" = "Kita perlu ini agar anda boleh simpan foto dan video ke librari foto anda.";
-"NSMicrophoneUsageDescription" = "Kita perlu ini agar anda boleh rekod dan kongsi mesej suara dan video dengan suara.";
-"NSSiriUsageDescription" = "Anda boleh guna Siri untuk kirim mesej.";
-"NSFaceIDUsageDescription" = "Anda boleh guna ID Muka untuk guna aplikasi.";
+"NSConacsUsageDescripion" = "elegram akan seniasa mua naik kenalan anda ke pelayan awan yang berenkripsi inggi agar anda boleh berhubung dengan rakan anda di semua perani anda.";
+"NSLocaionWhenInUseUsageDescripion" = "Bila anda hanar lokasi anda kepada rakan anda, elegram perlukan akses unuk unjuk pea.";
+"NSLocaionAlwaysAndWhenInUseUsageDescripion" = "Bila anda pilih unuk kongsi Lokasi Langsung anda dengan rakan dalam cha, elegram perlu akses laar belakang ke lokasi anda agar lokasi anda seniasa dikemaskini keika perkongsian.";
+"NSLocaionAlwaysUsageDescripion" = "Bila anda pilih unuk kongsi lokasi langsung anda dengan rakan dalam cha, elegram perlu akses laar belakang agar lokasi anda seniasa dikemaskini. Anda juga harus hanar lokasi anda ke Jam Apple.";
+"NSCameraUsageDescripion" = "Kia perlukan ini agar anda boleh ambil dan kongsi foo dan video, dan juga bua panggilan video.";
+"NSPhooLibraryUsageDescripion" = "Kia perlu ini agar anda boleh kongsi foo dan video dari librari foo anda.";
+"NSPhooLibraryAddUsageDescripion" = "Kia perlu ini agar anda boleh simpan foo dan video ke librari foo anda.";
+"NSMicrophoneUsageDescripion" = "Kia perlu ini agar anda boleh rekod dan kongsi mesej suara dan video dengan suara.";
+"NSSiriUsageDescripion" = "Anda boleh guna Siri unuk kirim mesej.";
+"NSFaceIDUsageDescripion" = "Anda boleh guna ID Muka unuk guna aplikasi.";
